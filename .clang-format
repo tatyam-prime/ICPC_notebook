@@ -1,0 +1,21 @@
+BasedOnStyle: Chromium
+AccessModifierOffset: -4
+AllowAllArgumentsOnNextLine: true
+AllowAllConstructorInitializersOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: No
+BreakBeforeBinaryOperators: NonAssignment
+ColumnLimit: 120
+# ForEachMacros: ['rep']
+IndentWidth: 3
+IndentWrappedFunctionNames: true
+SpaceAfterTemplateKeyword: false
+SpaceBeforeParens: ControlStatements
+SortIncludes: Never

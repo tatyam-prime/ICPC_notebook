@@ -3,3 +3,4 @@ plugins:
 - jemoji
 - jekyll-redirect-from
 theme: jekyll-theme-minimal
+title: tatyam/ICPC_notebook

@@ -1,0 +1,20 @@
+@import url("base.css");
+html,
+code {
+    font-size: 7.4pt;
+}
+
+@media print {
+    body {
+        column-count: 2;
+    }
+
+    @page {
+        size: A4 portrait;
+
+        /* ヘッダー */
+        @top-left {
+            content: "tonosama (Tokyo Institute of Technology)";
+        }
+    }
+}

@@ -45,3 +45,5 @@ data:
       title: test/modint/modint.test.cpp
 layout: toppage
 ---
+- [ライブラリをまとめたページ](notebook.html)
+- [ライブラリをまとめた PDF](notebook.pdf)

@@ -41,7 +41,7 @@ data:
   isVerificationFile: false
   path: src/modint/modint.hpp
   requiredBy: []
-  timestamp: '2024-02-14 22:09:17+09:00'
+  timestamp: '2024-02-14 23:41:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/modint/modint.test.cpp

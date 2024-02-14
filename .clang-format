@@ -13,7 +13,6 @@ AllowShortLoopsOnASingleLine: true
 AlwaysBreakTemplateDeclarations: No
 BreakBeforeBinaryOperators: NonAssignment
 ColumnLimit: 120
-# ForEachMacros: ['rep']
 IndentWidth: 3
 IndentWrappedFunctionNames: true
 SpaceAfterTemplateKeyword: false

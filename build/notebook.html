@@ -15,7 +15,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="output.css" />
+    <link rel="stylesheet" type="text/css" href="notebook.css" />
 </head>
 <body>
     <h1 id="title">tonosama Library</h1>
@@ -180,7 +180,7 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
 
     <div class="filename">
         <h2 id="modint.hpp">modint.hpp</h2>
-        md5: 1dcff5
+        md5: ade70b
 
     </div>
 <div class="content">
@@ -199,9 +199,9 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
    <span class="token keyword">friend</span> mm<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">-=</span><span class="token punctuation">(</span>mm<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> mm b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">=</span> a<span class="token punctuation">.</span>x <span class="token operator">-</span> b<span class="token punctuation">.</span>x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
    <span class="token keyword">friend</span> mm<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">*=</span><span class="token punctuation">(</span>mm<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> mm b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">=</span> a<span class="token punctuation">.</span>x <span class="token operator">*</span> b<span class="token punctuation">.</span>x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
    <span class="token keyword">friend</span> mm<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">/=</span><span class="token punctuation">(</span>mm<span class="token operator">&amp;</span> a<span class="token punctuation">,</span> mm b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">.</span><span class="token function">inv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   mm <span class="token function">inv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">pow</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">,</span> mod <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-   <span class="token keyword">friend</span> mm <span class="token function">pow</span><span class="token punctuation">(</span>mm a<span class="token punctuation">,</span> ll b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      mm c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+   mm <span class="token function">inv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">pow</span><span class="token punctuation">(</span>mod <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+   mm <span class="token function">pow</span><span class="token punctuation">(</span>ll b<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
+      mm a <span class="token operator">=</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
       <span class="token keyword">while</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
          <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> c <span class="token operator">*=</span> a<span class="token punctuation">;</span>
          a <span class="token operator">*=</span> a<span class="token punctuation">;</span>

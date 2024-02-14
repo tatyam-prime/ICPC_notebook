@@ -82,7 +82,7 @@ for (const section of section_order) {
 }
 
 // HTML を出力
-fs.writeFileSync("build/output.html", `<!DOCTYPE html>
+fs.writeFileSync("build/notebook.html", `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -99,7 +99,7 @@ fs.writeFileSync("build/output.html", `<!DOCTYPE html>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="output.css" />
+    <link rel="stylesheet" type="text/css" href="notebook.css" />
 </head>
 <body>
     <h1 id="title">${title}</h1>
@@ -115,7 +115,7 @@ fs.writeFileSync("build/output.html", `<!DOCTYPE html>
 </html>`);
 
 // CSS を出力
-fs.writeFileSync("build/output.css", `@import url("base.css");
+fs.writeFileSync("build/notebook.css", `@import url("base.css");
 html,
 code {
     font-size: ${fontsize};

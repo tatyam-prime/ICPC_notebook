@@ -13,9 +13,9 @@ struct mm {
    friend mm& operator-=(mm& a, mm b) { return a = a.x - b.x; }
    friend mm& operator*=(mm& a, mm b) { return a = a.x * b.x; }
    friend mm& operator/=(mm& a, mm b) { return a = a * b.inv(); }
-   mm inv() const { return pow(*this, mod - 2); }
-   friend mm pow(mm a, ll b) {
-      mm c = 1;
+   mm inv() const { return pow(mod - 2); }
+   mm pow(ll b) const {
+      mm a = *this, c = 1;
       while (b) {
          if (b & 1) c *= a;
          a *= a;

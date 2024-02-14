@@ -33,7 +33,7 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-02-14 17:35:43+09:00'
+  timestamp: '2024-02-14 22:09:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp

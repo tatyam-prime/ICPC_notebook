@@ -45,5 +45,7 @@ data:
       title: test/modint/modint.test.cpp
 layout: toppage
 ---
+みんなでつくる最強の ICPC 用ライブラリ (予定)
+
 - [ライブラリをまとめたページ](notebook.html)
 - [ライブラリをまとめた PDF](notebook.pdf)

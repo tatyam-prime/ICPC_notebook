@@ -8,45 +8,35 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/FPS/FFT.hpp\"\nconstexpr ll pow_mod_constexpr(ll x,\
-    \ ll n, int m) {\n   if (m == 1) return 0;\n   uint _m = (uint)(m);\n   ull r\
-    \ = 1;\n   ull y = x % m;\n   while (n) {\n      if (n & 1) r = (r * y) % _m;\n\
-    \      y = (y * y) % _m;\n      n >>= 1;\n   }\n   return r;\n}\n\nconstexpr bool\
-    \ is_prime_constexpr(int n) {\n   if (n <= 1) return false;\n   if (n == 2 ||\
-    \ n == 7 || n == 61) return true;\n   if (n % 2 == 0) return false;\n   ll d =\
-    \ n - 1;\n   while (d % 2 == 0) d /= 2;\n   constexpr ll bases[3] = {2, 7, 61};\n\
-    \   for (ll a : bases) {\n      ll t = d;\n      ll y = pow_mod_constexpr(a, t,\
-    \ n);\n      while (t != n - 1 && y != 1 && y != n - 1) {\n         y = y * y\
-    \ % n;\n         t <<= 1;\n      }\n      if (y != n - 1 && t % 2 == 0) { return\
-    \ false; }\n   }\n   return true;\n}\ntemplate<int n> constexpr bool is_prime\
-    \ = is_prime_constexpr(n);\n\nconstexpr pair<ll, ll> inv_gcd(ll a, ll b) {\n \
-    \  a = safe_mod(a, b);\n   if (a == 0) return {b, 0};\n\n   ll s = b, t = a;\n\
-    \   ll m0 = 0, m1 = 1;\n\n   while (t) {\n      ll u = s / t;\n      s -= t *\
-    \ u;\n      m0 -= m1 * u;  // |m1 * u| <= |m1| * s <= b\n\n      auto tmp = s;\n\
-    \      s = t;\n      t = tmp;\n      tmp = m0;\n      m0 = m1;\n      m1 = tmp;\n\
-    \   }\n   if (m0 < 0) m0 += b / s;\n   return {s, m0};\n}\n\null floor_sum_unsigned(ull\
-    \ n, ull m, ull a, ull b) {\n   ull ans = 0;\n   while (true) {\n      if (a >=\
-    \ m) {\n         ans += n * (n - 1) / 2 * (a / m);\n         a %= m;\n      }\n\
-    \      if (b >= m) {\n         ans += n * (b / m);\n         b %= m;\n      }\n\
-    \n      ull y_max = a * n + b;\n      if (y_max < m) break;\n      n = (ull)(y_max\
-    \ / m);\n      b = (ull)(y_max % m);\n      swap(m, a);\n   }\n   return ans;\n\
-    }\n\ntemplate<class mint, int g = internal::primitive_root<mint::mod()>, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nstruct fft_info {\n   static constexpr int rank2 = countr_zero_constexpr(mint::mod()\
-    \ - 1);\n   array<mint, rank2 + 1> root;   // root[i]^(2^i) == 1\n   array<mint,\
-    \ rank2 + 1> iroot;  // root[i] * iroot[i] == 1\n\n   array<mint, max(0, rank2\
-    \ - 2 + 1)> rate2;\n   array<mint, max(0, rank2 - 2 + 1)> irate2;\n\n   array<mint,\
-    \ max(0, rank2 - 3 + 1)> rate3;\n   array<mint, max(0, rank2 - 3 + 1)> irate3;\n\
-    \n   fft_info() {\n      root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n\
-    \      iroot[rank2] = root[rank2].inv();\n      for (int i = rank2 - 1; i >= 0;\
-    \ i--) {\n         root[i] = root[i + 1] * root[i + 1];\n         iroot[i] = iroot[i\
-    \ + 1] * iroot[i + 1];\n      }\n\n      {\n         mint prod = 1, iprod = 1;\n\
-    \         for (int i = 0; i <= rank2 - 2; i++) {\n            rate2[i] = root[i\
-    \ + 2] * prod;\n            irate2[i] = iroot[i + 2] * iprod;\n            prod\
-    \ *= iroot[i + 2];\n            iprod *= root[i + 2];\n         }\n      }\n \
-    \     {\n         mint prod = 1, iprod = 1;\n         for (int i = 0; i <= rank2\
-    \ - 3; i++) {\n            rate3[i] = root[i + 3] * prod;\n            irate3[i]\
-    \ = iroot[i + 3] * iprod;\n            prod *= iroot[i + 3];\n            iprod\
-    \ *= root[i + 3];\n         }\n      }\n   }\n};\n\ntemplate<class mint, internal::is_static_modint_t<mint>*\
+  bundledCode: "#line 1 \"src/FPS/FFT.hpp\"\nconstexpr pair<ll, ll> inv_gcd(ll a,\
+    \ ll b) {\n   a = safe_mod(a, b);\n   if (a == 0) return {b, 0};\n\n   ll s =\
+    \ b, t = a;\n   ll m0 = 0, m1 = 1;\n\n   while (t) {\n      ll u = s / t;\n  \
+    \    s -= t * u;\n      m0 -= m1 * u;  // |m1 * u| <= |m1| * s <= b\n\n      auto\
+    \ tmp = s;\n      s = t;\n      t = tmp;\n      tmp = m0;\n      m0 = m1;\n  \
+    \    m1 = tmp;\n   }\n   if (m0 < 0) m0 += b / s;\n   return {s, m0};\n}\n\null\
+    \ floor_sum_unsigned(ull n, ull m, ull a, ull b) {\n   ull ans = 0;\n   while\
+    \ (true) {\n      if (a >= m) {\n         ans += n * (n - 1) / 2 * (a / m);\n\
+    \         a %= m;\n      }\n      if (b >= m) {\n         ans += n * (b / m);\n\
+    \         b %= m;\n      }\n\n      ull y_max = a * n + b;\n      if (y_max <\
+    \ m) break;\n      n = (ull)(y_max / m);\n      b = (ull)(y_max % m);\n      swap(m,\
+    \ a);\n   }\n   return ans;\n}\n\ntemplate<class mint, int g = internal::primitive_root<mint::mod()>,\
+    \ internal::is_static_modint_t<mint>* = nullptr>\nstruct fft_info {\n   static\
+    \ constexpr int rank2 = countr_zero_constexpr(mint::mod() - 1);\n   array<mint,\
+    \ rank2 + 1> root;   // root[i]^(2^i) == 1\n   array<mint, rank2 + 1> iroot; \
+    \ // root[i] * iroot[i] == 1\n\n   array<mint, max(0, rank2 - 2 + 1)> rate2;\n\
+    \   array<mint, max(0, rank2 - 2 + 1)> irate2;\n\n   array<mint, max(0, rank2\
+    \ - 3 + 1)> rate3;\n   array<mint, max(0, rank2 - 3 + 1)> irate3;\n\n   fft_info()\
+    \ {\n      root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n      iroot[rank2]\
+    \ = root[rank2].inv();\n      for (int i = rank2 - 1; i >= 0; i--) {\n       \
+    \  root[i] = root[i + 1] * root[i + 1];\n         iroot[i] = iroot[i + 1] * iroot[i\
+    \ + 1];\n      }\n\n      {\n         mint prod = 1, iprod = 1;\n         for\
+    \ (int i = 0; i <= rank2 - 2; i++) {\n            rate2[i] = root[i + 2] * prod;\n\
+    \            irate2[i] = iroot[i + 2] * iprod;\n            prod *= iroot[i +\
+    \ 2];\n            iprod *= root[i + 2];\n         }\n      }\n      {\n     \
+    \    mint prod = 1, iprod = 1;\n         for (int i = 0; i <= rank2 - 3; i++)\
+    \ {\n            rate3[i] = root[i + 3] * prod;\n            irate3[i] = iroot[i\
+    \ + 3] * iprod;\n            prod *= iroot[i + 3];\n            iprod *= root[i\
+    \ + 3];\n         }\n      }\n   }\n};\n\ntemplate<class mint, internal::is_static_modint_t<mint>*\
     \ = nullptr> void butterfly(vector<mint>& a) {\n   int n = int(a.size());\n  \
     \ int h = internal::countr_zero((uint)n);\n\n   static const fft_info<mint> info;\n\
     \n   int len = 0;  // a[i, i+(n>>len), i+2*(n>>len), ..] is transformed\n   while\
@@ -138,29 +128,18 @@ data:
     \ MOD1;\n      static constexpr ull offset[5] = {0, 0, M1M2M3, 2 * M1M2M3, 3 *\
     \ M1M2M3};\n      x -= offset[diff % 5];\n      c[i] = x;\n   }\n\n   return c;\n\
     }\n"
-  code: "constexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n   if (m == 1) return\
-    \ 0;\n   uint _m = (uint)(m);\n   ull r = 1;\n   ull y = x % m;\n   while (n)\
-    \ {\n      if (n & 1) r = (r * y) % _m;\n      y = (y * y) % _m;\n      n >>=\
-    \ 1;\n   }\n   return r;\n}\n\nconstexpr bool is_prime_constexpr(int n) {\n  \
-    \ if (n <= 1) return false;\n   if (n == 2 || n == 7 || n == 61) return true;\n\
-    \   if (n % 2 == 0) return false;\n   ll d = n - 1;\n   while (d % 2 == 0) d /=\
-    \ 2;\n   constexpr ll bases[3] = {2, 7, 61};\n   for (ll a : bases) {\n      ll\
-    \ t = d;\n      ll y = pow_mod_constexpr(a, t, n);\n      while (t != n - 1 &&\
-    \ y != 1 && y != n - 1) {\n         y = y * y % n;\n         t <<= 1;\n      }\n\
-    \      if (y != n - 1 && t % 2 == 0) { return false; }\n   }\n   return true;\n\
-    }\ntemplate<int n> constexpr bool is_prime = is_prime_constexpr(n);\n\nconstexpr\
-    \ pair<ll, ll> inv_gcd(ll a, ll b) {\n   a = safe_mod(a, b);\n   if (a == 0) return\
-    \ {b, 0};\n\n   ll s = b, t = a;\n   ll m0 = 0, m1 = 1;\n\n   while (t) {\n  \
-    \    ll u = s / t;\n      s -= t * u;\n      m0 -= m1 * u;  // |m1 * u| <= |m1|\
-    \ * s <= b\n\n      auto tmp = s;\n      s = t;\n      t = tmp;\n      tmp = m0;\n\
-    \      m0 = m1;\n      m1 = tmp;\n   }\n   if (m0 < 0) m0 += b / s;\n   return\
-    \ {s, m0};\n}\n\null floor_sum_unsigned(ull n, ull m, ull a, ull b) {\n   ull\
-    \ ans = 0;\n   while (true) {\n      if (a >= m) {\n         ans += n * (n - 1)\
-    \ / 2 * (a / m);\n         a %= m;\n      }\n      if (b >= m) {\n         ans\
-    \ += n * (b / m);\n         b %= m;\n      }\n\n      ull y_max = a * n + b;\n\
-    \      if (y_max < m) break;\n      n = (ull)(y_max / m);\n      b = (ull)(y_max\
-    \ % m);\n      swap(m, a);\n   }\n   return ans;\n}\n\ntemplate<class mint, int\
-    \ g = internal::primitive_root<mint::mod()>, internal::is_static_modint_t<mint>*\
+  code: "constexpr pair<ll, ll> inv_gcd(ll a, ll b) {\n   a = safe_mod(a, b);\n  \
+    \ if (a == 0) return {b, 0};\n\n   ll s = b, t = a;\n   ll m0 = 0, m1 = 1;\n\n\
+    \   while (t) {\n      ll u = s / t;\n      s -= t * u;\n      m0 -= m1 * u; \
+    \ // |m1 * u| <= |m1| * s <= b\n\n      auto tmp = s;\n      s = t;\n      t =\
+    \ tmp;\n      tmp = m0;\n      m0 = m1;\n      m1 = tmp;\n   }\n   if (m0 < 0)\
+    \ m0 += b / s;\n   return {s, m0};\n}\n\null floor_sum_unsigned(ull n, ull m,\
+    \ ull a, ull b) {\n   ull ans = 0;\n   while (true) {\n      if (a >= m) {\n \
+    \        ans += n * (n - 1) / 2 * (a / m);\n         a %= m;\n      }\n      if\
+    \ (b >= m) {\n         ans += n * (b / m);\n         b %= m;\n      }\n\n    \
+    \  ull y_max = a * n + b;\n      if (y_max < m) break;\n      n = (ull)(y_max\
+    \ / m);\n      b = (ull)(y_max % m);\n      swap(m, a);\n   }\n   return ans;\n\
+    }\n\ntemplate<class mint, int g = internal::primitive_root<mint::mod()>, internal::is_static_modint_t<mint>*\
     \ = nullptr>\nstruct fft_info {\n   static constexpr int rank2 = countr_zero_constexpr(mint::mod()\
     \ - 1);\n   array<mint, rank2 + 1> root;   // root[i]^(2^i) == 1\n   array<mint,\
     \ rank2 + 1> iroot;  // root[i] * iroot[i] == 1\n\n   array<mint, max(0, rank2\
@@ -272,7 +251,7 @@ data:
   isVerificationFile: false
   path: src/FPS/FFT.hpp
   requiredBy: []
-  timestamp: '2024-02-14 17:35:43+09:00'
+  timestamp: '2024-02-14 22:09:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/FPS/FFT.hpp

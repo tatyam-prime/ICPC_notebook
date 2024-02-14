@@ -19,6 +19,9 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
+    - name: git pull
+      run: git pull
+
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

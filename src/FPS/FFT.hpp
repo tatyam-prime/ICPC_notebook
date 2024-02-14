@@ -1,36 +1,3 @@
-constexpr ll pow_mod_constexpr(ll x, ll n, int m) {
-   if (m == 1) return 0;
-   uint _m = (uint)(m);
-   ull r = 1;
-   ull y = x % m;
-   while (n) {
-      if (n & 1) r = (r * y) % _m;
-      y = (y * y) % _m;
-      n >>= 1;
-   }
-   return r;
-}
-
-constexpr bool is_prime_constexpr(int n) {
-   if (n <= 1) return false;
-   if (n == 2 || n == 7 || n == 61) return true;
-   if (n % 2 == 0) return false;
-   ll d = n - 1;
-   while (d % 2 == 0) d /= 2;
-   constexpr ll bases[3] = {2, 7, 61};
-   for (ll a : bases) {
-      ll t = d;
-      ll y = pow_mod_constexpr(a, t, n);
-      while (t != n - 1 && y != 1 && y != n - 1) {
-         y = y * y % n;
-         t <<= 1;
-      }
-      if (y != n - 1 && t % 2 == 0) { return false; }
-   }
-   return true;
-}
-template<int n> constexpr bool is_prime = is_prime_constexpr(n);
-
 constexpr pair<ll, ll> inv_gcd(ll a, ll b) {
    a = safe_mod(a, b);
    if (a == 0) return {b, 0};

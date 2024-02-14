@@ -1,17 +1,31 @@
-PHONY: all
+PHONY: build verify serve
 
-all: notebook.pdf
-	clang-format -i test/*/*.cpp
+build: notebook.pdf
+
+verify: .verify-helper/timestamps.local.json $(wildcard src/*/* test/* test/*/*)
+	clang-format -i test/*/*.cpp test/*.hpp
+	oj-verify run
+
+URL = "http://127.0.0.1:4000"
+
+serve: build verify
 	cp notebook.pdf .verify-helper/docs/static/
 	cp build/notebook.html .verify-helper/docs/static/
 	cp build/*.css .verify-helper/docs/static/
-	oj-verify all
+	oj-verify docs
+	cd .verify-helper/markdown; \
+	bundle install; \
+	( sleep 2; \
+	  ( command -v open && open $(URL) ) || \
+	  ( command -v start && start $(URL) ) || \
+	  xdg-open $(URL) ) & \
+	bundle exec jekyll serve --incremental
 
 notebook.pdf: build/base.css build/notebook.css build/notebook.html
 	vivliostyle build build/notebook.html -o notebook.pdf
 
 build/notebook.html: build/build.js $(wildcard src/*/*) .clang-format
-	clang-format -i $(wildcard src/*/*.cpp) $(wildcard src/*/*.hpp)
+	clang-format -i $(wildcard src/*/*.cpp src/*/*.hpp)
 	node build/build.js
 
 build/notebook.css: build/build.js

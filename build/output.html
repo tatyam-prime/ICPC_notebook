@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tonosama Library</title>
+    <!-- MathJax -->
+    <script>
+        var MathJax = {
+            tex: {
+                inlineMath: [['$', '$']]
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="output.css" />
+</head>
+<body>
+    <h1 id="title">tonosama Library</h1>
+    <!-- 目次 -->
+    <nav id="toc" role="doc-toc">
+        <ol>
+            
+    <li><a href="#template">template</a></li>
+    <ol>
+    <li><a href="#hash.sh">hash.sh</a></li>
+    <li><a href="#settings.sh">settings.sh</a></li>
+    <li><a href="#template.hpp">template.hpp</a></li>
+    </ol>
+    <li><a href="#data-structure">data-structure</a></li>
+    <ol>
+    <li><a href="#BIT.hpp">BIT.hpp</a></li>
+    </ol>
+    <li><a href="#math">math</a></li>
+    <ol>
+    </ol>
+    <li><a href="#FPS">FPS</a></li>
+    <ol>
+    </ol>
+    <li><a href="#graph">graph</a></li>
+    <ol>
+    </ol>
+    <li><a href="#flow">flow</a></li>
+    <ol>
+    </ol>
+    <li><a href="#string">string</a></li>
+    <ol>
+    </ol>
+    <li><a href="#geometry">geometry</a></li>
+    <ol>
+    </ol>
+    <li><a href="#memo">memo</a></li>
+    <ol>
+    </ol>
+        </ol>
+    </nav>
+
+    
+    <h2 class="section" id="template">template</h2>
+
+    <div class="filename">
+        <h2 id="hash.sh">hash.sh</h2>
+    </div>
+<div class="content">
+    <pre><code><span class="token comment"># sh hash.sh -> コピペ -> Ctrl + D</span>
+<span class="token comment"># コメント・空白・改行を削除して md5 でハッシュする</span>
+g++ <span class="token parameter variable">-dD</span> <span class="token parameter variable">-E</span> <span class="token parameter variable">-fpreprocessed</span> - <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">'[:space:]'</span> <span class="token operator">|</span> md5sum <span class="token operator">|</span> <span class="token function">cut</span> -c-6
+</code></pre>
+</div>
+
+    <div class="filename">
+        <h2 id="settings.sh">settings.sh</h2>
+    </div>
+<div class="content">
+    <pre><code><span class="token comment"># CLion の設定</span>
+Settings → Build → CMake → Reload CMake Project
+add_compile_options<span class="token punctuation">(</span>-D_GLIBCXX_DEBUG<span class="token punctuation">)</span>
+<span class="token comment"># Caps Lock を Ctrl に変更</span>
+setxkbmap <span class="token parameter variable">-option</span> ctrl:nocaps
+</code></pre>
+</div>
+
+    <div class="filename">
+        <h2 id="template.hpp">template.hpp</h2>
+        md5: 365d7f
+
+    </div>
+<div class="content">
+    <pre><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">using</span> ll <span class="token operator">=</span> <span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ll INF <span class="token operator">=</span> LLONG_MAX <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">rep</span><span class="token expression"><span class="token punctuation">(</span>i<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token punctuation">(</span>ll i <span class="token operator">=</span> a<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">all</span><span class="token expression"><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token function">begin</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">end</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span></span></span>
+ll <span class="token function">sz</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">size</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">chmin</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">auto</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">&lt;=</span> b<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">chmax</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">auto</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> b<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">// your code here...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+
+    <h2 class="section" id="data-structure">data-structure</h2>
+
+    <div class="filename">
+        <h2 id="BIT.hpp">BIT.hpp</h2>
+        md5: d8ec49
+
+    </div>
+<div class="content">
+    <pre><code><span class="token keyword">struct</span> <span class="token class-name">BIT</span> <span class="token punctuation">{</span>
+   vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> a<span class="token punctuation">;</span>
+   <span class="token function">BIT</span><span class="token punctuation">(</span>ll n<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">a</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+   <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>ll p<span class="token punctuation">,</span> ll x<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// A[p] += x</span>
+      p<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">&lt;</span> <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         a<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">+=</span> x<span class="token punctuation">;</span>
+         p <span class="token operator">+=</span> p <span class="token operator">&amp;</span> <span class="token operator">-</span>p<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+   ll <span class="token function">sum</span><span class="token punctuation">(</span>ll r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      ll s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         s <span class="token operator">+=</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
+         r <span class="token operator">-=</span> r <span class="token operator">&amp;</span> <span class="token operator">-</span>r<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   ll <span class="token function">sum</span><span class="token punctuation">(</span>ll l<span class="token punctuation">,</span> ll r<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// sum of A[l, r)</span>
+      <span class="token keyword">return</span> <span class="token function">sum</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">sum</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</div>
+
+    <h2 class="section" id="math">math</h2>
+
+    <h2 class="section" id="FPS">FPS</h2>
+
+    <h2 class="section" id="graph">graph</h2>
+
+    <h2 class="section" id="flow">flow</h2>
+
+    <h2 class="section" id="string">string</h2>
+
+    <h2 class="section" id="geometry">geometry</h2>
+
+    <h2 class="section" id="memo">memo</h2>
+
+</body>
+</html>

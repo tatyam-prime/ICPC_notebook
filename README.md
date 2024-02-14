@@ -10,14 +10,21 @@
 
 #### 事前にインストールするもの
 
-- node.js
+- node.js (v18 以上)
 - npm
-- oj-verify
+    - `brew install node` / <https://qiita.com/nouernet/items/d6ad4d5f4f08857644de>
+- clang-format
+    - `npm install -g clang-format`
+- vivliostyle
+    - `npm install -g @vivliostyle/cli`
+- その他依存関係
+    - `npm install`
+- (使うなら) oj-verify
+    - `pip3 install online-judge-verify-helper`
 
 ## PDF の生成方法
 
-1. `npm install`
-2. `make build`
+1. `make build`
 
 ## 内容の変更方法
 

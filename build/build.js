@@ -30,6 +30,15 @@ function addCode(folder, filename) {
     <div class="filename">
         <h2 id="${filename}">${filename}</h2>`;
 
+    // C++ ならハッシュ値を計算
+    if (filename.endsWith(".cpp") || filename.endsWith(".hpp")) {
+        var text_hash = cp.execSync(`cat ${folder}/${filename} | sh build/hash.sh`);
+        codeContent += `
+        md5: ${text_hash}`;
+    }
+    codeContent += `
+    </div>`;
+
     const highlight_text = (function () {
         // .md ファイルは marked で HTML にコンパイル
         if (filename.endsWith(".md")) {
@@ -44,17 +53,9 @@ function addCode(folder, filename) {
         }
         return html_escape(text);
     })();
-
-    // C++ ならハッシュ値を計算
-    if (filename.endsWith(".cpp") || filename.endsWith(".hpp")) {
-        var text_hash = cp.execSync(`cat ${folder}/${filename} | sh build/hash.sh`);
-        codeContent += `
-        md5: ${text_hash}`;
-    }
-    codeContent += `
-    </div>`;
     
-    codeContent += '\n<div class="content">';
+    codeContent += `
+    <div class="content content-${filename.split('.').pop()}">`;
     if (filename.endsWith(".md")) {
         codeContent += highlight_text;
     } else {

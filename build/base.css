@@ -137,3 +137,7 @@ td, th {
 .token.selector .token.attribute {
 	color: #001575;
 }
+
+.content-md {
+    font-family: sans-serif;
+}

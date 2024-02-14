@@ -46,7 +46,7 @@ data:
   isVerificationFile: true
   path: test/modint/BarrettReduction.test.cpp
   requiredBy: []
-  timestamp: '2024-02-14 16:35:07+09:00'
+  timestamp: '2024-02-14 17:35:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/modint/BarrettReduction.test.cpp

@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "test/template.hpp"
 #include "src/modint/BarrettReduction.hpp"
 
@@ -8,4 +9,5 @@ int main() {
       if (mod == 0) continue;
       assert(ans1 == ans2);
    }
+   puts("Hello World");
 }

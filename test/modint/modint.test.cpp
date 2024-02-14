@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A"
 #include "test/template.hpp"
 #include "src/modint/modint.hpp"
 
@@ -19,4 +20,5 @@ int main() {
       A = a;
       assert((A /= B.inv()).x == C.x);
    }
+   puts("Hello World");
 }

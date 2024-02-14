@@ -2,6 +2,9 @@ PHONY: all
 
 all: notebook.pdf
 	clang-format -i test/*/*.cpp
+	cp notebook.pdf .verify-helper/docs/static/
+	cp build/notebook.html .verify-helper/docs/static/
+	cp build/*.css .verify-helper/docs/static/
 	oj-verify all
 
 notebook.pdf: build/base.css build/notebook.css build/notebook.html

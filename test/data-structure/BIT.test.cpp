@@ -9,7 +9,7 @@ int main() {
    cin >> N >> Q;
 
    BIT A(N);
-   rep (i, 0, N) {
+   rep(i, 0, N) {
       ll a;
       cin >> a;
       A.add(i, a);

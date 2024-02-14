@@ -1,9 +1,9 @@
 const title = "tonosama Library";  // タイトル (先頭に表示)
 const teamname = "tonosama (Tokyo Institute of Technology)";   // チーム名 + 大学名 (各ページ左上に表示)
-const fontsize = "7.5pt";       // フォントサイズ
+const fontsize = "7.4pt";       // フォントサイズ
 const orientation = "portrait";     // portrait (縦長) / landscape (横長)
 const num_columns = 2;          // 何段組みか
-const section_order = ["template", "data-structure", "math", "FPS", "graph", "flow", "string", "geometry", "memo"];   // src/* のフォルダを読み出す順序
+const section_order = ["template", "data-structure", "math", "modint", "FPS", "graph", "flow", "string", "geometry", "memo"];   // src/* のフォルダを読み出す順序
 
 
 

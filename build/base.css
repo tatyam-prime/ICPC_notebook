@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css");
-@import url("../node_modules/prism-themes/themes/prism-coldark-cold.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-cold.min.css");
 
 
 html,
@@ -39,9 +39,9 @@ h1#title {
 }
 
 h2.section {
-    margin-left: -1mm;
-    margin-right: -1mm;
-    padding-left: 2mm;
+    margin-left: -0.5mm;
+    margin-right: -0.5mm;
+    padding-left: 1.5mm;
     background-color: #005a8e99;
     color: #ffffff;
 }

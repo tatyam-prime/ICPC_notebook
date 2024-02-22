@@ -14,7 +14,7 @@
 - npm
     - `brew install node` / <https://qiita.com/nouernet/items/d6ad4d5f4f08857644de>
 - clang-format
-    - `npm install -g clang-format`
+    - `brew install clang-format` / `sudo apt install clang-format`
 - vivliostyle
     - `npm install -g @vivliostyle/cli`
 - その他依存関係

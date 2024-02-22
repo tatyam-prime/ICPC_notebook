@@ -3,7 +3,7 @@ const teamname = "tatyam/ICPC_notebook";   // チーム名 + 大学名 (各ペ�
 const fontsize = "7.4pt";       // フォントサイズ
 const orientation = "portrait";     // portrait (縦長) / landscape (横長)
 const num_columns = 2;          // 何段組みか
-const section_order = ["template", "data-structure", "math", "modint", "FPS", "graph", "flow", "string", "geometry", "memo"];   // src/* のフォルダを読み出す順序
+const section_order = ["template", "data-structure", "math", "modint", "FPS", "graph", "graph/tree", "flow", "string", "algorithm", "geometry", "fast", "solver", "memo"];   // src/* のフォルダを読み出す順序
 
 
 
@@ -24,6 +24,7 @@ let ToCContent = "";
 function addCode(folder, filename) {
     const text = fs.readFileSync(folder + "/" + filename).toString();
 
+    // タイトル行
     ToCContent += `
     <li><a href="#${filename}">${filename}</a></li>`;
     codeContent += `
@@ -68,15 +69,18 @@ function addCode(folder, filename) {
 }
 
 for (const section of section_order) {
-    ToCContent += `
-    <li><a href="#${section}">${section}</a></li>
+        ToCContent += `
+    <li><a class="section" href="#${section}">${section}</a></li>
     <ol>`;
-    codeContent += `
+        codeContent += `
     <h2 class="section" id="${section}">${section}</h2>
 `;
+
     const folder = "src/" + section;
     for (const file of fs.readdirSync(folder)) {
-        addCode(folder, file);
+        if (fs.statSync(folder + "/" + file).isFile()) {
+            addCode(folder, file);
+        }
     }
     ToCContent += `
     </ol>`;

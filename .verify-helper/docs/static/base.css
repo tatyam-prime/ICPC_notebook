@@ -34,16 +34,23 @@ h6 {
     break-after: avoid;
 }
 
+a {
+    color: currentColor;
+}
+
 h1#title {
     font-weight: 800;
+}
+
+.section {
+    background-color: #005a8e99;
+    color: #ffffff;
 }
 
 h2.section {
     margin-left: -0.5mm;
     margin-right: -0.5mm;
     padding-left: 1.5mm;
-    background-color: #005a8e99;
-    color: #ffffff;
 }
 
 div.filename {
@@ -67,7 +74,7 @@ div.filename {
 
         /* ヘッダー */
         @top-left {
-            content: "tonosama (Tokyo Institute of Technology)";
+            content: "tatyam/ICPC_notebook";
         }
 
         @top-right {
@@ -89,14 +96,11 @@ nav#toc a {
     display: inline-flex;
     width: 100%;
     text-decoration: none;
-    color: currentColor;
     align-items: baseline;
 }
 
-nav#toc>ol>li>a {
+nav#toc a.section {
     padding-left: 0.5em;
-    background-color: #005a8e99;
-    color: #ffffff;
 }
 
 nav#toc>ol>ol>li>a::before {

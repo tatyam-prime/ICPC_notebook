@@ -15,10 +15,10 @@ int main() {
       A.add(i, a);
    }
 
-   while (Q--) {
+   while(Q--) {
       ll a, b, c;
       cin >> a >> b >> c;
-      if (a == 0) A.add(b, c);
+      if(a == 0) A.add(b, c);
       else cout << A.sum(b, c) << '\n';
    }
 }

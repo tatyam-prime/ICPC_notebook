@@ -1,4 +1,4 @@
-using u64 = uint64_t;
+// using u64 = uint64_t;
 struct Barrett {  // mod < 2^32
    u64 m, im;
    Barrett(u64 mod) : m(mod), im(-1ULL / m + 1) {}
@@ -7,7 +7,7 @@ struct Barrett {  // mod < 2^32
       a *= b;
       u64 x = ((__uint128_t)a * im) >> 64;
       a -= x * m;
-      if ((ll)a < 0) a += m;
+      if((ll)a < 0) a += m;
       return a;
    }
 };

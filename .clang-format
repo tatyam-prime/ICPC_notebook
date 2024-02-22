@@ -16,5 +16,5 @@ ColumnLimit: 120
 IndentWidth: 3
 IndentWrappedFunctionNames: true
 SpaceAfterTemplateKeyword: false
-SpaceBeforeParens: ControlStatements
+SpaceBeforeParens: Never
 SortIncludes: Never

@@ -1,4 +1,4 @@
-// {998244353, 3}, {2013265921, 31}, {2113929217, 5}
+// {998244353, 3}, {754974721, 11}, {167772161, 3}, {469762049, 3}, {2130706433, 3}
 mm g = 3;  // 原始根
 void fft(vector<mm>& a) {
    ll n = sz(a), lg = __lg(n);
@@ -6,8 +6,8 @@ void fft(vector<mm>& a) {
       vector<mm> z(30);
       mm s = 1;
       rep(i, 2, 32) {
-         z[i - 2] = s * g.pow((mod - 1) >> i);
-         s *= g.inv().pow((mod - 1) >> i);
+         z[i - 2] = s * g.pow(mod >> i);
+         s *= g.inv().pow(mod >> i);
       }
       return z;
    }();
@@ -32,8 +32,8 @@ void ifft(vector<mm>& a) {
       vector<mm> z(30);
       mm s = 1;
       rep(i, 2, 32) {  // g を逆数に
-         z[i - 2] = s * g.inv().pow((mod - 1) >> i);
-         s *= g.pow((mod - 1) >> i);
+         z[i - 2] = s * g.inv().pow(mod >> i);
+         s *= g.pow(mod >> i);
       }
       return z;
    }();

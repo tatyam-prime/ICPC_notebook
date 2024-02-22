@@ -15,7 +15,7 @@ serve: build verify
 	oj-verify docs
 	cd .verify-helper/markdown; \
 	bundle install; \
-	( sleep 2; \
+	( sleep 5; \
 	  ( command -v open && open $(URL) ) || \
 	  ( command -v start && start $(URL) ) || \
 	  xdg-open $(URL) ) & \

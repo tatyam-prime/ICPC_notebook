@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: src/FPS
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/FPS/FFT.hpp
       title: src/FPS/FFT.hpp
   - name: src/data-structure
@@ -30,6 +30,11 @@ data:
       path: test/template.hpp
       title: test/template.hpp
   verificationCategories:
+  - name: test/FPS
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/FPS/FFT.test.cpp
+      title: test/FPS/FFT.test.cpp
   - name: test/data-structure
     pages:
     - icon: ':heavy_check_mark:'

@@ -13,22 +13,22 @@ data:
     links: []
   bundledCode: "#line 1 \"src/data-structure/BIT.hpp\"\nstruct BIT {\n   vector<ll>\
     \ a;\n   BIT(ll n) : a(n + 1) {}\n   void add(ll p, ll x) {  // A[p] += x\n  \
-    \    p++;\n      while (p < sz(a)) {\n         a[p] += x;\n         p += p & -p;\n\
-    \      }\n   }\n   ll sum(ll r) {\n      ll s = 0;\n      while (r > 0) {\n  \
-    \       s += a[r];\n         r -= r & -r;\n      }\n      return s;\n   }\n  \
-    \ ll sum(ll l, ll r) {  // sum of A[l, r)\n      return sum(r) - sum(l);\n   }\n\
+    \    p++;\n      while(p < sz(a)) {\n         a[p] += x;\n         p += p & -p;\n\
+    \      }\n   }\n   ll sum(ll r) {\n      ll s = 0;\n      while(r > 0) {\n   \
+    \      s += a[r];\n         r -= r & -r;\n      }\n      return s;\n   }\n   ll\
+    \ sum(ll l, ll r) {  // sum of A[l, r)\n      return sum(r) - sum(l);\n   }\n\
     };\n"
   code: "struct BIT {\n   vector<ll> a;\n   BIT(ll n) : a(n + 1) {}\n   void add(ll\
-    \ p, ll x) {  // A[p] += x\n      p++;\n      while (p < sz(a)) {\n         a[p]\
+    \ p, ll x) {  // A[p] += x\n      p++;\n      while(p < sz(a)) {\n         a[p]\
     \ += x;\n         p += p & -p;\n      }\n   }\n   ll sum(ll r) {\n      ll s =\
-    \ 0;\n      while (r > 0) {\n         s += a[r];\n         r -= r & -r;\n    \
-    \  }\n      return s;\n   }\n   ll sum(ll l, ll r) {  // sum of A[l, r)\n    \
-    \  return sum(r) - sum(l);\n   }\n};\n"
+    \ 0;\n      while(r > 0) {\n         s += a[r];\n         r -= r & -r;\n     \
+    \ }\n      return s;\n   }\n   ll sum(ll l, ll r) {  // sum of A[l, r)\n     \
+    \ return sum(r) - sum(l);\n   }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy: []
-  timestamp: '2024-02-15 00:53:50+09:00'
+  timestamp: '2024-02-23 02:52:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp

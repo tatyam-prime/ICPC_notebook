@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/FPS/FFT.hpp
-    title: src/FPS/FFT.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/FPS/FFT.test.cpp
+    title: test/FPS/FFT.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data-structure/BIT.test.cpp
     title: test/data-structure/BIT.test.cpp
@@ -22,25 +22,25 @@ data:
     links: []
   bundledCode: "#line 1 \"test/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nconst ll INF = LLONG_MAX / 4;\n#define rep(i, a,\
-    \ b) for (ll i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\nll sz(const\
-    \ auto& a) { return size(a); }\nbool chmin(auto& a, auto b) {\n   if (a <= b)\
-    \ return 0;\n   a = b;\n   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if\
-    \ (a >= b) return 0;\n   a = b;\n   return 1;\n}\n"
+    \ b) for(ll i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\nll sz(const\
+    \ auto& a) { return size(a); }\nbool chmin(auto& a, auto b) {\n   if(a <= b) return\
+    \ 0;\n   a = b;\n   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if(a >= b)\
+    \ return 0;\n   a = b;\n   return 1;\n}\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nconst\
-    \ ll INF = LLONG_MAX / 4;\n#define rep(i, a, b) for (ll i = a; i < (b); i++)\n\
+    \ ll INF = LLONG_MAX / 4;\n#define rep(i, a, b) for(ll i = a; i < (b); i++)\n\
     #define all(a) begin(a), end(a)\nll sz(const auto& a) { return size(a); }\nbool\
-    \ chmin(auto& a, auto b) {\n   if (a <= b) return 0;\n   a = b;\n   return 1;\n\
-    }\nbool chmax(auto& a, auto b) {\n   if (a >= b) return 0;\n   a = b;\n   return\
+    \ chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n   a = b;\n   return 1;\n\
+    }\nbool chmax(auto& a, auto b) {\n   if(a >= b) return 0;\n   a = b;\n   return\
     \ 1;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: test/template.hpp
-  requiredBy:
-  - src/FPS/FFT.hpp
-  timestamp: '2024-02-15 00:53:50+09:00'
+  requiredBy: []
+  timestamp: '2024-02-23 02:52:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp
+  - test/FPS/FFT.test.cpp
   - test/modint/modint.test.cpp
   - test/modint/BarrettReduction.test.cpp
 documentation_of: test/template.hpp

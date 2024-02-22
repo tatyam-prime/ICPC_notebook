@@ -5,12 +5,17 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/FPS/FFT.hpp
-      title: src/FPS/FFT.hpp
+      title: FFT
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: src/data-structure/BIT.hpp
+  - name: src/extra
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/extra/modint_fast.hpp
+      title: src/extra/modint_fast.hpp
   - name: src/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -18,7 +23,7 @@ data:
       title: src/modint/BarrettReduction.hpp
     - icon: ':heavy_check_mark:'
       path: src/modint/modint.hpp
-      title: src/modint/modint.hpp
+      title: Modint
   - name: src/template
     pages:
     - icon: ':warning:'
@@ -35,6 +40,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/FPS/FFT.test.cpp
       title: test/FPS/FFT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/FPS/FFT_fast.test.cpp
+      title: test/FPS/FFT_fast.test.cpp
   - name: test/data-structure
     pages:
     - icon: ':heavy_check_mark:'

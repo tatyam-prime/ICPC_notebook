@@ -7,6 +7,9 @@ data:
     path: test/FPS/FFT.test.cpp
     title: test/FPS/FFT.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/FPS/FFT_fast.test.cpp
+    title: test/FPS/FFT_fast.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data-structure/BIT.test.cpp
     title: test/data-structure/BIT.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,11 +39,12 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-02-23 02:52:48+09:00'
+  timestamp: '2024-02-23 07:40:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp
   - test/FPS/FFT.test.cpp
+  - test/FPS/FFT_fast.test.cpp
   - test/modint/modint.test.cpp
   - test/modint/BarrettReduction.test.cpp
 documentation_of: test/template.hpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
-    title: src/modint/modint.hpp
+    title: Modint
   - icon: ':heavy_check_mark:'
     path: test/template.hpp
     title: test/template.hpp
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: test/modint/modint.test.cpp
   requiredBy: []
-  timestamp: '2024-02-23 02:52:48+09:00'
+  timestamp: '2024-02-23 07:40:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/modint/modint.test.cpp

@@ -44,15 +44,13 @@ data:
   isVerificationFile: false
   path: src/modint/modint.hpp
   requiredBy: []
-  timestamp: '2024-02-23 02:52:48+09:00'
+  timestamp: '2024-02-23 07:40:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPS/FFT.test.cpp
   - test/modint/modint.test.cpp
 documentation_of: src/modint/modint.hpp
 layout: document
-redirect_from:
-- /library/src/modint/modint.hpp
-- /library/src/modint/modint.hpp.html
-title: src/modint/modint.hpp
+title: Modint
 ---
+

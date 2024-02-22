@@ -1,15 +1,15 @@
 ---
-title: FFT
+title: FFT (高速フーリエ変換 / 畳み込み)
 documentation_of: //src/FPS/FFT.hpp
 ---
 
-- 参考実装: [AC Library (初期実装)](https://github.com/atcoder/ac-library/blob/8250de484ae0ab597391db58040a602e0dc1a419/atcoder/convolution.hpp)
+- 参考実装：[AC Library (初期実装)](https://github.com/atcoder/ac-library/blob/8250de484ae0ab597391db58040a602e0dc1a419/atcoder/convolution.hpp)
 
 ## 使い方
 
-- `void fft(vector<mm>& a)`: 長さが $2$ べきの数列 $a$ の離散フーリエ変換を行う
-- `void ifft(vector<mm>& a)`: 長さが $2$ べきの数列 $a$ の逆離散フーリエ変換を行う
-- `vector<mm> conv(vector<mm> a, vector<mm> b)`: 数列 $a, b$ の畳み込みを行う
+- `void fft(vector<mm>& a)`：長さが $2$ べきの数列 $a$ の離散フーリエ変換を行う
+- `void ifft(vector<mm>& a)`：長さが $2$ べきの数列 $a$ の逆離散フーリエ変換を行う
+- `vector<mm> conv(vector<mm> a, vector<mm> b)`：数列 $a, b$ の畳み込みを行う
 
 $O(N \log N)$ 時間
 

@@ -1,16 +1,16 @@
 struct BIT {
    vector<ll> a;
    BIT(ll n) : a(n + 1) {}
-   void add(ll p, ll x) {  // A[p] += x
-      p++;
-      while(p < sz(a)) {
-         a[p] += x;
-         p += p & -p;
+   void add(ll i, ll x) {  // A[i] += x
+      i++;
+      while(i < sz(a)) {
+         a[i] += x;
+         i += i & -i;
       }
    }
    ll sum(ll r) {
       ll s = 0;
-      while(r > 0) {
+      while(r) {
          s += a[r];
          r -= r & -r;
       }

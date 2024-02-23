@@ -12,6 +12,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: BIT (Fenwick Tree)
+    - icon: ':warning:'
+      path: src/data-structure/FastSet.hpp
+      title: "\u9AD8\u901F bitset (64 \u5206\u6728)"
   - name: src/extra
     pages:
     - icon: ':heavy_check_mark:'

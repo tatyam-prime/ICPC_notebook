@@ -26,7 +26,7 @@ data:
   isVerificationFile: false
   path: src/template/template.hpp
   requiredBy: []
-  timestamp: '2024-02-23 07:40:04+09:00'
+  timestamp: '2024-02-23 08:47:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template/template.hpp

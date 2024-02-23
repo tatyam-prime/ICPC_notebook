@@ -3,7 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/FPS/FFT.hpp
-    title: FFT
+    title: "FFT (\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB / \u7573\u307F\u8FBC\
+      \u307F)"
   - icon: ':heavy_check_mark:'
     path: src/extra/modint_fast.hpp
     title: src/extra/modint_fast.hpp
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/FPS/FFT_fast.test.cpp
   requiredBy: []
-  timestamp: '2024-02-23 07:40:04+09:00'
+  timestamp: '2024-02-23 08:47:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FPS/FFT_fast.test.cpp

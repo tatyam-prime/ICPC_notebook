@@ -128,23 +128,23 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
 
     <div class="filename">
         <h2 id="BIT.hpp">BIT.hpp</h2>
-        md5: d8ec49
+        md5: 1fe3e2
 
     </div>
     <div class="content content-hpp">
     <pre><code><span class="token keyword">struct</span> <span class="token class-name">BIT</span> <span class="token punctuation">{</span>
    vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> a<span class="token punctuation">;</span>
    <span class="token function">BIT</span><span class="token punctuation">(</span>ll n<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">a</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-   <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>ll p<span class="token punctuation">,</span> ll x<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// A[p] += x</span>
-      p<span class="token operator">++</span><span class="token punctuation">;</span>
-      <span class="token keyword">while</span><span class="token punctuation">(</span>p <span class="token operator">&lt;</span> <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         a<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">+=</span> x<span class="token punctuation">;</span>
-         p <span class="token operator">+=</span> p <span class="token operator">&amp;</span> <span class="token operator">-</span>p<span class="token punctuation">;</span>
+   <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>ll i<span class="token punctuation">,</span> ll x<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// A[i] += x</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> x<span class="token punctuation">;</span>
+         i <span class="token operator">+=</span> i <span class="token operator">&amp;</span> <span class="token operator">-</span>i<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
    <span class="token punctuation">}</span>
    ll <span class="token function">sum</span><span class="token punctuation">(</span>ll r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       ll s <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-      <span class="token keyword">while</span><span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
          s <span class="token operator">+=</span> a<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
          r <span class="token operator">-=</span> r <span class="token operator">&amp;</span> <span class="token operator">-</span>r<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>

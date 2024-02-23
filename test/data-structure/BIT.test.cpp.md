@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
-    title: src/data-structure/BIT.hpp
+    title: BIT (Fenwick Tree)
   - icon: ':heavy_check_mark:'
     path: test/template.hpp
     title: test/template.hpp
@@ -24,14 +24,14 @@ data:
     \ { return size(a); }\nbool chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n\
     \   a = b;\n   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if(a >= b) return\
     \ 0;\n   a = b;\n   return 1;\n}\n#line 1 \"src/data-structure/BIT.hpp\"\nstruct\
-    \ BIT {\n   vector<ll> a;\n   BIT(ll n) : a(n + 1) {}\n   void add(ll p, ll x)\
-    \ {  // A[p] += x\n      p++;\n      while(p < sz(a)) {\n         a[p] += x;\n\
-    \         p += p & -p;\n      }\n   }\n   ll sum(ll r) {\n      ll s = 0;\n  \
-    \    while(r > 0) {\n         s += a[r];\n         r -= r & -r;\n      }\n   \
-    \   return s;\n   }\n   ll sum(ll l, ll r) {  // sum of A[l, r)\n      return\
-    \ sum(r) - sum(l);\n   }\n};\n#line 4 \"test/data-structure/BIT.test.cpp\"\n\n\
-    int main() {\n   cin.tie(0)->sync_with_stdio(0);\n\n   ll N, Q;\n   cin >> N >>\
-    \ Q;\n\n   BIT A(N);\n   rep(i, 0, N) {\n      ll a;\n      cin >> a;\n      A.add(i,\
+    \ BIT {\n   vector<ll> a;\n   BIT(ll n) : a(n + 1) {}\n   void add(ll i, ll x)\
+    \ {  // A[i] += x\n      i++;\n      while(i < sz(a)) {\n         a[i] += x;\n\
+    \         i += i & -i;\n      }\n   }\n   ll sum(ll r) {\n      ll s = 0;\n  \
+    \    while(r) {\n         s += a[r];\n         r -= r & -r;\n      }\n      return\
+    \ s;\n   }\n   ll sum(ll l, ll r) {  // sum of A[l, r)\n      return sum(r) -\
+    \ sum(l);\n   }\n};\n#line 4 \"test/data-structure/BIT.test.cpp\"\n\nint main()\
+    \ {\n   cin.tie(0)->sync_with_stdio(0);\n\n   ll N, Q;\n   cin >> N >> Q;\n\n\
+    \   BIT A(N);\n   rep(i, 0, N) {\n      ll a;\n      cin >> a;\n      A.add(i,\
     \ a);\n   }\n\n   while(Q--) {\n      ll a, b, c;\n      cin >> a >> b >> c;\n\
     \      if(a == 0) A.add(b, c);\n      else cout << A.sum(b, c) << '\\n';\n   }\n\
     }\n"
@@ -48,7 +48,7 @@ data:
   isVerificationFile: true
   path: test/data-structure/BIT.test.cpp
   requiredBy: []
-  timestamp: '2024-02-23 07:40:04+09:00'
+  timestamp: '2024-02-23 08:47:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data-structure/BIT.test.cpp

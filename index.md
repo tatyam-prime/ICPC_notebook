@@ -5,12 +5,13 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/FPS/FFT.hpp
-      title: FFT
+      title: "FFT (\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB / \u7573\u307F\
+        \u8FBC\u307F)"
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
-      title: src/data-structure/BIT.hpp
+      title: BIT (Fenwick Tree)
   - name: src/extra
     pages:
     - icon: ':heavy_check_mark:'

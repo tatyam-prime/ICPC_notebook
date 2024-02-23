@@ -12,7 +12,7 @@
 
 - node.js (v18 以上)
 - npm
-    - `brew install node` / <https://qiita.com/nouernet/items/d6ad4d5f4f08857644de>
+    - `brew install node` / <https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/nodejs-on-wsl>
 - clang-format
     - `brew install clang-format` / `sudo apt install clang-format`
 - vivliostyle

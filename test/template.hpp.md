@@ -13,6 +13,9 @@ data:
     path: test/data-structure/BIT.test.cpp
     title: test/data-structure/BIT.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data-structure/FastSet.test.cpp
+    title: test/data-structure/FastSet.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/modint/BarrettReduction.test.cpp
     title: test/modint/BarrettReduction.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,9 +42,10 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-02-23 13:57:10+00:00'
+  timestamp: '2024-02-23 23:49:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data-structure/FastSet.test.cpp
   - test/data-structure/BIT.test.cpp
   - test/FPS/FFT.test.cpp
   - test/FPS/FFT_fast.test.cpp

@@ -49,16 +49,16 @@ data:
     \ 0, lg) {\n      ll w = 1 << (lg - l - 1);\n      mm s = 1;\n      rep(k, 0,\
     \ 1 << l) {\n         ll o = k << (lg - l);\n         rep(i, o, o + w) {\n   \
     \         mm x = a[i], y = a[i + w] * s;\n            a[i] = x + y;\n        \
-    \    a[i + w] = x - y;\n         }\n         s *= z[__builtin_ctzll(~k)];\n  \
-    \    }\n   }\n}\n// \u30B3\u30D4\u30DA\nvoid ifft(vector<mm>& a) {\n   ll n =\
-    \ sz(a), lg = __lg(n);\n   static auto z = [] {\n      vector<mm> z(30);\n   \
-    \   mm s = 1;\n      rep(i, 2, 32) {  // g \u3092\u9006\u6570\u306B\n        \
-    \ z[i - 2] = s * g.inv().pow(mod >> i);\n         s *= g.pow(mod >> i);\n    \
-    \  }\n      return z;\n   }();\n   for(ll l = lg; l--;) {  // \u9006\u9806\u306B\
+    \    a[i + w] = x - y;\n         }\n         s *= z[countr_zero<uint64_t>(~k)];\n\
+    \      }\n   }\n}\n// \u30B3\u30D4\u30DA\nvoid ifft(vector<mm>& a) {\n   ll n\
+    \ = sz(a), lg = __lg(n);\n   static auto z = [] {\n      vector<mm> z(30);\n \
+    \     mm s = 1;\n      rep(i, 2, 32) {  // g \u3092\u9006\u6570\u306B\n      \
+    \   z[i - 2] = s * g.inv().pow(mod >> i);\n         s *= g.pow(mod >> i);\n  \
+    \    }\n      return z;\n   }();\n   for(ll l = lg; l--;) {  // \u9006\u9806\u306B\
     \n      ll w = 1 << (lg - l - 1);\n      mm s = 1;\n      rep(k, 0, 1 << l) {\n\
     \         ll o = k << (lg - l);\n         rep(i, o, o + w) {\n            mm x\
     \ = a[i], y = a[i + w];  // *s \u3092\u79FB\u52D5\n            a[i] = x + y;\n\
-    \            a[i + w] = (x - y) * s;\n         }\n         s *= z[__builtin_ctzll(~k)];\n\
+    \            a[i + w] = (x - y) * s;\n         }\n         s *= z[countr_zero<uint64_t>(~k)];\n\
     \      }\n   }\n}\nvector<mm> conv(vector<mm> a, vector<mm> b) {\n   if(a.empty()\
     \ || b.empty()) return {};\n   size_t n_ = sz(a) + sz(b) - 1, n = bit_ceil(n_);\n\
     \   // if(min(sz(a), sz(b)) <= 60) \u611A\u76F4\u306B\u639B\u3051\u7B97\n   a.resize(n);\n\
@@ -81,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/FPS/FFT_fast.test.cpp
   requiredBy: []
-  timestamp: '2024-02-23 13:57:10+00:00'
+  timestamp: '2024-02-23 23:49:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FPS/FFT_fast.test.cpp

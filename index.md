@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: BIT (Fenwick Tree)
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/FastSet.hpp
       title: "\u9AD8\u901F bitset (64 \u5206\u6728)"
   - name: src/extra
@@ -52,6 +52,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data-structure/BIT.test.cpp
       title: test/data-structure/BIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data-structure/FastSet.test.cpp
+      title: test/data-structure/FastSet.test.cpp
   - name: test/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -66,3 +69,8 @@ layout: toppage
 
 - [ライブラリをまとめたページ](notebook.html)
 - [ライブラリをまとめた PDF](notebook.pdf)
+
+### 前提要件
+
+- C++20
+- x86_64 (with AVX2)

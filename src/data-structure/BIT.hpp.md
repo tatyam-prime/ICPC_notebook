@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy: []
-  timestamp: '2024-02-23 13:57:10+00:00'
+  timestamp: '2024-02-23 23:49:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp
@@ -40,9 +40,11 @@ title: BIT (Fenwick Tree)
 
 ## 使い方
 
+1 点加算・区間和ができるデータ構造
+
 - `BIT(ll n)`：長さ $n$ の配列を作る
 - `void add(ll i, ll x)`：`A[i] += x` を行う
 - `ll sum(ll r)`：`sum(A[:r])` を求める
 - `ll sum(ll l, ll r)`：`sum(A[l:r])` を求める
 
-計算量 $O(\log N)$ / query
+計算量 $O(\log n)$ / query

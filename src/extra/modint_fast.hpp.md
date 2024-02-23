@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: src/extra/modint_fast.hpp
   requiredBy: []
-  timestamp: '2024-02-23 13:57:10+00:00'
+  timestamp: '2024-02-23 23:49:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPS/FFT_fast.test.cpp

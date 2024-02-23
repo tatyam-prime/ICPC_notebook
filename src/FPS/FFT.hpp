@@ -21,7 +21,7 @@ void fft(vector<mm>& a) {
             a[i] = x + y;
             a[i + w] = x - y;
          }
-         s *= z[__builtin_ctzll(~k)];
+         s *= z[countr_zero<uint64_t>(~k)];
       }
    }
 }
@@ -47,7 +47,7 @@ void ifft(vector<mm>& a) {
             a[i] = x + y;
             a[i + w] = (x - y) * s;
          }
-         s *= z[__builtin_ctzll(~k)];
+         s *= z[countr_zero<uint64_t>(~k)];
       }
    }
 }

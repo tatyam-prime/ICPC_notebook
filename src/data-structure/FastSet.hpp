@@ -45,6 +45,7 @@ struct FastSet {
             while(h--) i = i * B + __lg(a[h][i]);
             return i;
          }
+         i /= B;
       }
       return -1;
    }

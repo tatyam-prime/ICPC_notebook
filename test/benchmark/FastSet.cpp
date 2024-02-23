@@ -1,6 +1,5 @@
 #include "test/template.hpp"
 using u64 = uint64_t;
-
 #include "src/data-structure/FastSet.hpp"
 
 mt19937 rnd;

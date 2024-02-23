@@ -160,7 +160,7 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
 
     <div class="filename">
         <h2 id="FastSet.hpp">FastSet.hpp</h2>
-        md5: f86f47
+        md5: 928ece
 
     </div>
     <div class="content content-hpp">
@@ -211,6 +211,7 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
             <span class="token keyword">while</span><span class="token punctuation">(</span>h<span class="token operator">--</span><span class="token punctuation">)</span> i <span class="token operator">=</span> i <span class="token operator">*</span> B <span class="token operator">+</span> <span class="token function">__lg</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>h<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> i<span class="token punctuation">;</span>
          <span class="token punctuation">}</span>
+         i <span class="token operator">/=</span> B<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
       <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
    <span class="token punctuation">}</span>
@@ -283,7 +284,7 @@ ll <span class="token function">sz</span><span class="token punctuation">(</span
 
     <div class="filename">
         <h2 id="FFT.hpp">FFT.hpp</h2>
-        md5: 5e6cea
+        md5: 50afa8
 
     </div>
     <div class="content content-hpp">
@@ -310,7 +311,7 @@ mm g <span class="token operator">=</span> <span class="token number">3</span><s
             a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
             a<span class="token punctuation">[</span>i <span class="token operator">+</span> w<span class="token punctuation">]</span> <span class="token operator">=</span> x <span class="token operator">-</span> y<span class="token punctuation">;</span>
          <span class="token punctuation">}</span>
-         s <span class="token operator">*=</span> z<span class="token punctuation">[</span><span class="token function">__builtin_ctzll</span><span class="token punctuation">(</span><span class="token operator">~</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+         s <span class="token operator">*=</span> z<span class="token punctuation">[</span><span class="token generic-function"><span class="token function">countr_zero</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">uint64_t</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token operator">~</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -336,7 +337,7 @@ mm g <span class="token operator">=</span> <span class="token number">3</span><s
             a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
             a<span class="token punctuation">[</span>i <span class="token operator">+</span> w<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">*</span> s<span class="token punctuation">;</span>
          <span class="token punctuation">}</span>
-         s <span class="token operator">*=</span> z<span class="token punctuation">[</span><span class="token function">__builtin_ctzll</span><span class="token punctuation">(</span><span class="token operator">~</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+         s <span class="token operator">*=</span> z<span class="token punctuation">[</span><span class="token generic-function"><span class="token function">countr_zero</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">uint64_t</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token operator">~</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>

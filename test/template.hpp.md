@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/modint/modint.test.cpp
     title: test/modint/modint.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/Zalgorithm.test.cpp
+    title: test/string/Zalgorithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -42,13 +45,14 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-02-23 23:49:40+09:00'
+  timestamp: '2024-02-24 12:54:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/FastSet.test.cpp
   - test/data-structure/BIT.test.cpp
   - test/FPS/FFT.test.cpp
   - test/FPS/FFT_fast.test.cpp
+  - test/string/Zalgorithm.test.cpp
   - test/modint/modint.test.cpp
   - test/modint/BarrettReduction.test.cpp
 documentation_of: test/template.hpp

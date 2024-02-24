@@ -28,6 +28,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/modint/modint.hpp
       title: Modint
+  - name: src/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/string/Zalgorithm.hpp
+      title: Z Algorithm
   - name: src/template
     pages:
     - icon: ':warning:'
@@ -63,6 +68,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/modint/modint.test.cpp
       title: test/modint/modint.test.cpp
+  - name: test/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/Zalgorithm.test.cpp
+      title: test/string/Zalgorithm.test.cpp
 layout: toppage
 ---
 みんなでつくる最強の ICPC 用ライブラリ (予定)

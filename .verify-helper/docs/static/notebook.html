@@ -59,6 +59,7 @@
     </ol>
     <li><a class="section" href="#string">string</a></li>
     <ol>
+    <li><a href="#Zalgorithm.hpp">Zalgorithm.hpp</a></li>
     </ol>
     <li><a class="section" href="#algorithm">algorithm</a></li>
     <ol>
@@ -402,6 +403,29 @@ vector<span class="token operator">&lt;</span>mm<span class="token operator">></
 </div>
 
     <h2 class="section" id="string">string</h2>
+
+    <div class="filename">
+        <h2 id="Zalgorithm.hpp">Zalgorithm.hpp</h2>
+        md5: fe4085
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code><span class="token comment">// Z[i] := LCP(s, s[i:])      abacaba -> 7010301</span>
+<span class="token keyword">auto</span> <span class="token function">Z</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   vector <span class="token function">z</span><span class="token punctuation">(</span><span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   ll l <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+   <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">>=</span> r <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token function">min</span><span class="token punctuation">(</span>r <span class="token operator">-</span> i<span class="token punctuation">,</span> z<span class="token punctuation">[</span>i <span class="token operator">-</span> l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         l <span class="token operator">=</span> i<span class="token punctuation">;</span>
+         r <span class="token operator">=</span> i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> z<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
 
     <h2 class="section" id="algorithm">algorithm</h2>
 

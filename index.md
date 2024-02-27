@@ -83,4 +83,4 @@ layout: toppage
 ### 前提要件
 
 - C++20
-- x86_64 (with AVX2)
+- GCC 11 以上

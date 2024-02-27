@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy: []
-  timestamp: '2024-02-24 12:54:59+09:00'
+  timestamp: '2024-02-27 14:23:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp
@@ -47,4 +47,4 @@ title: BIT (Fenwick Tree)
 - `ll sum(ll r)`：`sum(A[:r])` を求める
 - `ll sum(ll l, ll r)`：`sum(A[l:r])` を求める
 
-計算量 $O(\log n)$ / query
+計算量 $O(\log n)$ / クエリ

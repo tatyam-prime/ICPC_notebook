@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/FastSet.hpp
   requiredBy: []
-  timestamp: '2024-02-24 12:54:59+09:00'
+  timestamp: '2024-02-27 14:23:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/FastSet.test.cpp
@@ -75,11 +75,8 @@ title: "\u9AD8\u901F bitset (64 \u5206\u6728)"
 - `ll prev(ll i)`：$i$ より小さい最大の要素を求める
     - std::set における `prev(A.lower_bound(i))` に相当
 
-計算量 $O(\log_{\text{word}} n)$ / query
-
-## 注意
-
-- (値域の大きさ) bits くらいのメモリを用意する必要がある
+時間計算量 $O(\log_{\text{word}} n)$ / クエリ  
+空間計算量 $(\frac{\text{word}}{\text{word} - 1}\cdot n + O(\log_{\text{word}} n))$ bits　<span style="color:firebrick;font-weight:600;"> ($\boldsymbol{n}$ bits くらいのメモリを使います) </span>
 
 ## ベンチマーク
 

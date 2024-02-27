@@ -14,4 +14,4 @@ documentation_of: //src/data-structure/BIT.hpp
 - `ll sum(ll r)`：`sum(A[:r])` を求める
 - `ll sum(ll l, ll r)`：`sum(A[l:r])` を求める
 
-計算量 $O(\log n)$ / query
+計算量 $O(\log n)$ / クエリ

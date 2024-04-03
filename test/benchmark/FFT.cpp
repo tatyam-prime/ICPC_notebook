@@ -17,7 +17,7 @@ namespace fft1 {
 }  // namespace fft1
 namespace fft2 {
 #include "src/extra/modint_fast.hpp"
-#include "src/FPS/FFT.hpp"
+#include "src/FPS/FFT_fast.hpp"
 }  // namespace fft2
 
 int main() {
@@ -35,7 +35,7 @@ int main() {
       rep(i, 0, N) A[i] = B[i] = i;
       auto s = system_clock::now();
       auto C = fft2::conv(A, B);
-      cout << format("my FFT with fast modint: {} ms", duration_cast<milliseconds>(system_clock::now() - s).count())
+      cout << format("my fast FFT: {} ms", duration_cast<milliseconds>(system_clock::now() - s).count())
            << endl;
    }
    {

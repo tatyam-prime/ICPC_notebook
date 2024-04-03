@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 #include "test/template.hpp"
 #include "src/extra/modint_fast.hpp"
-#include "src/FPS/FFT.hpp"
+#include "src/FPS/FFT_fast.hpp"
 
 int main() {
    cin.tie(0)->sync_with_stdio(0);

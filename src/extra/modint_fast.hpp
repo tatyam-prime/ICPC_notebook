@@ -3,7 +3,7 @@ struct mm {
    uint32_t x;
    mm() : x(0) {}
    template<class T> mm(T x_) : x(x_ % mod) {
-      if(is_signed_v<T> && x >= mod) x += mod;
+      if(x >= mod) x += mod;
    }
    friend mm operator+(mm a, mm b) {
       a.x += b.x;

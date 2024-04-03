@@ -34,12 +34,10 @@ int main() {
    }
    {
       static bitset<MAX> s;
-      test(
-          query, "std::bitset", [&](ll x) { s[x] = 1; }, [&](ll x) { return s._Find_next(x); });
+      test(query, "std::bitset", [&](ll x) { s[x] = 1; }, [&](ll x) { return s._Find_next(x); });
    }
    {
       FastSet s(MAX);
-      test(
-          query, "FastSet", [&](ll x) { s.set(x); }, [&](ll x) { return s.next(x); });
+      test(query, "FastSet", [&](ll x) { s.set(x); }, [&](ll x) { return s.next(x); });
    }
 }

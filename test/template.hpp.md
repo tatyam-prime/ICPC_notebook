@@ -31,28 +31,27 @@ data:
     links: []
   bundledCode: "#line 1 \"test/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\nconst ll INF = LLONG_MAX / 4;\n#define rep(i, a,\
-    \ b) for(ll i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\nll sz(const\
-    \ auto& a) { return size(a); }\nbool chmin(auto& a, auto b) {\n   if(a <= b) return\
-    \ 0;\n   a = b;\n   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if(a >= b)\
-    \ return 0;\n   a = b;\n   return 1;\n}\n"
+    \ b) for(ll i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\n#define sz(a)\
+    \ ssize(a)\nbool chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n   a = b;\n\
+    \   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if(a >= b) return 0;\n   a\
+    \ = b;\n   return 1;\n}\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\nconst\
     \ ll INF = LLONG_MAX / 4;\n#define rep(i, a, b) for(ll i = a; i < (b); i++)\n\
-    #define all(a) begin(a), end(a)\nll sz(const auto& a) { return size(a); }\nbool\
-    \ chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n   a = b;\n   return 1;\n\
-    }\nbool chmax(auto& a, auto b) {\n   if(a >= b) return 0;\n   a = b;\n   return\
-    \ 1;\n}\n"
+    #define all(a) begin(a), end(a)\n#define sz(a) ssize(a)\nbool chmin(auto& a, auto\
+    \ b) {\n   if(a <= b) return 0;\n   a = b;\n   return 1;\n}\nbool chmax(auto&\
+    \ a, auto b) {\n   if(a >= b) return 0;\n   a = b;\n   return 1;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-02-27 14:23:38+09:00'
+  timestamp: '2024-04-04 07:37:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/string/Zalgorithm.test.cpp
+  - test/FPS/FFT_fast.test.cpp
+  - test/FPS/FFT.test.cpp
   - test/data-structure/FastSet.test.cpp
   - test/data-structure/BIT.test.cpp
-  - test/FPS/FFT.test.cpp
-  - test/FPS/FFT_fast.test.cpp
-  - test/string/Zalgorithm.test.cpp
   - test/modint/modint.test.cpp
   - test/modint/BarrettReduction.test.cpp
 documentation_of: test/template.hpp

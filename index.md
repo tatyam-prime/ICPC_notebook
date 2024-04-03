@@ -7,6 +7,9 @@ data:
       path: src/FPS/FFT.hpp
       title: "FFT (\u9AD8\u901F\u30D5\u30FC\u30EA\u30A8\u5909\u63DB / \u7573\u307F\
         \u8FBC\u307F)"
+    - icon: ':heavy_check_mark:'
+      path: src/FPS/FFT_fast.hpp
+      title: FFT (bit reversal ver.)
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'

@@ -21,16 +21,16 @@ data:
     \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\n#line\
     \ 1 \"test/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
     \ ll = long long;\nconst ll INF = LLONG_MAX / 4;\n#define rep(i, a, b) for(ll\
-    \ i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\nll sz(const auto& a)\
-    \ { return size(a); }\nbool chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n\
-    \   a = b;\n   return 1;\n}\nbool chmax(auto& a, auto b) {\n   if(a >= b) return\
-    \ 0;\n   a = b;\n   return 1;\n}\n#line 3 \"test/modint/BarrettReduction.test.cpp\"\
-    \nusing u64 = uint64_t;\n#line 1 \"src/modint/BarrettReduction.hpp\"\n// using\
-    \ u64 = uint64_t;\nstruct Barrett {  // mod < 2^32\n   u64 m, im;\n   Barrett(u64\
-    \ mod) : m(mod), im(-1ULL / m + 1) {}\n   // input: a * b < 2^64, output: a *\
-    \ b % mod\n   u64 mul(u64 a, u64 b) const {\n      a *= b;\n      u64 x = ((__uint128_t)a\
-    \ * im) >> 64;\n      a -= x * m;\n      if((ll)a < 0) a += m;\n      return a;\n\
-    \   }\n};\n#line 5 \"test/modint/BarrettReduction.test.cpp\"\n\nmt19937 rnd(random_device{}());\n\
+    \ i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\n#define sz(a) ssize(a)\n\
+    bool chmin(auto& a, auto b) {\n   if(a <= b) return 0;\n   a = b;\n   return 1;\n\
+    }\nbool chmax(auto& a, auto b) {\n   if(a >= b) return 0;\n   a = b;\n   return\
+    \ 1;\n}\n#line 3 \"test/modint/BarrettReduction.test.cpp\"\nusing u64 = uint64_t;\n\
+    #line 1 \"src/modint/BarrettReduction.hpp\"\n// using u64 = uint64_t;\nstruct\
+    \ Barrett {  // mod < 2^32\n   u64 m, im;\n   Barrett(u64 mod) : m(mod), im(-1ULL\
+    \ / m + 1) {}\n   // input: a * b < 2^64, output: a * b % mod\n   u64 mul(u64\
+    \ a, u64 b) const {\n      a *= b;\n      u64 x = ((__uint128_t)a * im) >> 64;\n\
+    \      a -= x * m;\n      if((ll)a < 0) a += m;\n      return a;\n   }\n};\n#line\
+    \ 5 \"test/modint/BarrettReduction.test.cpp\"\n\nmt19937 rnd(random_device{}());\n\
     int main() {\n   rep(i, 0, 1e5) {\n      const u64 mod = rnd(), a = rnd(), b =\
     \ rnd(), ans1 = Barrett(mod).mul(a, b), ans2 = a * b % mod;\n      if(mod == 0)\
     \ continue;\n      assert(ans1 == ans2);\n   }\n   puts(\"Hello World\");\n}\n"
@@ -46,7 +46,7 @@ data:
   isVerificationFile: true
   path: test/modint/BarrettReduction.test.cpp
   requiredBy: []
-  timestamp: '2024-02-27 14:23:38+09:00'
+  timestamp: '2024-04-04 07:37:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/modint/BarrettReduction.test.cpp

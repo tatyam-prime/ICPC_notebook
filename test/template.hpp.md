@@ -25,6 +25,9 @@ data:
     path: test/string/RollingHash.test.cpp
     title: test/string/RollingHash.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/SuffixArray.test.cpp
+    title: test/string/SuffixArray.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/Zalgorithm.test.cpp
     title: test/string/Zalgorithm.test.cpp
   _isVerificationFailed: false
@@ -47,11 +50,12 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-04-04 09:48:54+09:00'
+  timestamp: '2024-04-04 11:44:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Zalgorithm.test.cpp
   - test/string/RollingHash.test.cpp
+  - test/string/SuffixArray.test.cpp
   - test/FPS/FFT_fast.test.cpp
   - test/FPS/FFT.test.cpp
   - test/data-structure/FastSet.test.cpp

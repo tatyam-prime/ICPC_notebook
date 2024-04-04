@@ -37,6 +37,9 @@ data:
       path: src/string/RollingHash.hpp
       title: Rolling Hash
     - icon: ':heavy_check_mark:'
+      path: src/string/SuffixArray.hpp
+      title: Suffix Array
+    - icon: ':heavy_check_mark:'
       path: src/string/Zalgorithm.hpp
       title: Z Algorithm
   - name: src/template
@@ -79,6 +82,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/string/RollingHash.test.cpp
       title: test/string/RollingHash.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/string/SuffixArray.test.cpp
+      title: test/string/SuffixArray.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/Zalgorithm.test.cpp
       title: test/string/Zalgorithm.test.cpp

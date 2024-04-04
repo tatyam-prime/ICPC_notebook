@@ -1,4 +1,5 @@
-// Z[i] := LCP(s, s[i:])      abacaba -> 7010301
+// Z[i] := LCP(s, s[i:])
+// abacaba -> 7010301
 auto Z(const string& s) {
    vector<ll> z(sz(s), sz(s));
    ll l = -1, r = -1;

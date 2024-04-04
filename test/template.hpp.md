@@ -22,6 +22,9 @@ data:
     path: test/modint/modint.test.cpp
     title: test/modint/modint.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/RollingHash.test.cpp
+    title: test/string/RollingHash.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/Zalgorithm.test.cpp
     title: test/string/Zalgorithm.test.cpp
   _isVerificationFailed: false
@@ -44,10 +47,11 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-04-04 07:37:37+09:00'
+  timestamp: '2024-04-04 09:04:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Zalgorithm.test.cpp
+  - test/string/RollingHash.test.cpp
   - test/FPS/FFT_fast.test.cpp
   - test/FPS/FFT.test.cpp
   - test/data-structure/FastSet.test.cpp

@@ -34,6 +34,9 @@ data:
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/string/RollingHash.hpp
+      title: Rolling Hash
+    - icon: ':heavy_check_mark:'
       path: src/string/Zalgorithm.hpp
       title: Z Algorithm
   - name: src/template
@@ -73,6 +76,9 @@ data:
       title: test/modint/modint.test.cpp
   - name: test/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/RollingHash.test.cpp
+      title: test/string/RollingHash.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/Zalgorithm.test.cpp
       title: test/string/Zalgorithm.test.cpp

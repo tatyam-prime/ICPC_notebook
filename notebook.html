@@ -46,7 +46,7 @@
     <li><a class="section" href="#FPS">FPS</a></li>
     <ol>
     <li><a href="#FFT.hpp">FFT.hpp</a></li>
-    <li><a href="#FFT2.hpp">FFT2.hpp</a></li>
+    <li><a href="#FFT_fast.hpp">FFT_fast.hpp</a></li>
     </ol>
     <li><a class="section" href="#graph">graph</a></li>
     <ol>
@@ -60,6 +60,7 @@
     </ol>
     <li><a class="section" href="#string">string</a></li>
     <ol>
+    <li><a href="#RollingHash.hpp">RollingHash.hpp</a></li>
     <li><a href="#Zalgorithm.hpp">Zalgorithm.hpp</a></li>
     </ol>
     <li><a class="section" href="#algorithm">algorithm</a></li>
@@ -329,7 +330,7 @@ vector<span class="token operator">&lt;</span>mm<span class="token operator">></
 </div>
 
     <div class="filename">
-        <h2 id="FFT2.hpp">FFT2.hpp</h2>
+        <h2 id="FFT_fast.hpp">FFT_fast.hpp</h2>
         md5: 91085e
 
     </div>
@@ -448,6 +449,38 @@ vector<span class="token operator">&lt;</span>mm<span class="token operator">></
 </div>
 
     <h2 class="section" id="string">string</h2>
+
+    <div class="filename">
+        <h2 id="RollingHash.hpp">RollingHash.hpp</h2>
+        md5: 41625f
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code><span class="token comment">// using u64 = uint64_t;</span>
+<span class="token keyword">const</span> u64 mod <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+u64 <span class="token function">add</span><span class="token punctuation">(</span>u64 a<span class="token punctuation">,</span> u64 b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   a <span class="token operator">+=</span> b<span class="token punctuation">;</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">>=</span> mod<span class="token punctuation">)</span> a <span class="token operator">-=</span> mod<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+u64 <span class="token function">mul</span><span class="token punctuation">(</span>u64 a<span class="token punctuation">,</span> u64 b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">auto</span> c <span class="token operator">=</span> <span class="token punctuation">(</span>__uint128_t<span class="token punctuation">)</span>a <span class="token operator">*</span> b<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> <span class="token function">add</span><span class="token punctuation">(</span>c <span class="token operator">>></span> <span class="token number">61</span><span class="token punctuation">,</span> c <span class="token operator">&amp;</span> mod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+random_device rnd<span class="token punctuation">;</span>
+<span class="token keyword">const</span> u64 r <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>u64<span class="token punctuation">)</span><span class="token function">rnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">32</span> <span class="token operator">|</span> <span class="token function">rnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token class-name">RH</span> <span class="token punctuation">{</span>
+   ll n<span class="token punctuation">;</span>
+   vector<span class="token operator">&lt;</span>u64<span class="token operator">></span> hs<span class="token punctuation">,</span> pw<span class="token punctuation">;</span>
+   <span class="token function">RH</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">n</span><span class="token punctuation">(</span><span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">hs</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">pw</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span>ll i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         pw<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>pw<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         hs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token function">mul</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">,</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+   u64 <span class="token function">get</span><span class="token punctuation">(</span>ll l<span class="token punctuation">,</span> ll r<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">add</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">,</span> mod <span class="token operator">-</span> <span class="token function">mul</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> pw<span class="token punctuation">[</span>r <span class="token operator">-</span> l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+</div>
 
     <div class="filename">
         <h2 id="Zalgorithm.hpp">Zalgorithm.hpp</h2>

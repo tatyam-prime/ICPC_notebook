@@ -3,7 +3,7 @@ const teamname = "tatyam/ICPC_notebook";   // チーム名 + 大学名 (各ペ�
 const fontsize = "7.4pt";       // フォントサイズ
 const orientation = "portrait";     // portrait (縦長) / landscape (横長)
 const num_columns = 2;          // 何段組みか
-const section_order = ["template", "data-structure", "math", "modint", "FPS", "graph", "graph/tree", "flow", "string", "algorithm", "geometry"];   // src/* のフォルダを読み出す順序
+const section_order = ["template", "data-structure", "math", "modint", "FPS", "graph", "graph/tree", "flow", "string", "algorithm", "geometry", "memo"];   // src/* のフォルダを読み出す順序
 
 
 

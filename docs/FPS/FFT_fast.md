@@ -8,6 +8,8 @@ documentation_of: //src/FPS/FFT_fast.hpp
 
 - [Modint](../modint/modint.hpp)
 
+より高速な FFT．4 進でやるとより高速になるが，長すぎるので妥協
+
 ## 使い方
 
 - `void fft(vector<mm>& a)`：長さが $n$ : $2$ べきの数列 $a$ の離散フーリエ変換を行う

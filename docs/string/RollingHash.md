@@ -8,7 +8,7 @@ documentation_of: //src/string/RollingHash.hpp
 
 - `RH rh(string s)`：文字列 $s$ に対する Rolling Hash を準備する
     - $O(n)$ 時間
-- `rh.get(ll l, ll r)`：$s[l:r]$ の hash を求める
+- `u64 rh.get(ll l, ll r)`：$s[l:r]$ の hash を求める
     - mod を $P := 2^{61}-1$ とし，基数 $r$ を $[0, P)$ からランダムに選ぶ
     - このとき，長さ $n$ の文字列 $s$ の hash は $(s[0] r^{n-1} + s[1] r^{n-2} + \dots + s[n-1] r^0) \bmod P$ で計算される
     - $O(1)$ 時間

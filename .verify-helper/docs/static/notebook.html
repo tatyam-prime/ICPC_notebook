@@ -61,6 +61,7 @@
     <li><a class="section" href="#string">string</a></li>
     <ol>
     <li><a href="#RollingHash.hpp">RollingHash.hpp</a></li>
+    <li><a href="#SuffixArray.hpp">SuffixArray.hpp</a></li>
     <li><a href="#Zalgorithm.hpp">Zalgorithm.hpp</a></li>
     </ol>
     <li><a class="section" href="#algorithm">algorithm</a></li>
@@ -68,6 +69,10 @@
     </ol>
     <li><a class="section" href="#geometry">geometry</a></li>
     <ol>
+    </ol>
+    <li><a class="section" href="#memo">memo</a></li>
+    <ol>
+    <li><a href="#Primes.md">Primes.md</a></li>
     </ol>
         </ol>
     </nav>
@@ -483,6 +488,47 @@ random_device rnd<span class="token punctuation">;</span>
 </div>
 
     <div class="filename">
+        <h2 id="SuffixArray.hpp">SuffixArray.hpp</h2>
+        md5: 034644
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code><span class="token comment">// returns pair{sa, lcp}</span>
+<span class="token comment">// s[sa[0]:] &lt; s[sa[1]:] &lt; … &lt; s[sa[n-1]:]</span>
+<span class="token comment">// lcp[i] = LCP(s[sa[i]:], s[sa[i+1]:])</span>
+<span class="token keyword">auto</span> <span class="token function">SA</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> ll lim <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   ll n <span class="token operator">=</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> <span class="token function">sa</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">lcp</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token function">all</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">y</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">ws</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> lim<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rk</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">iota</span><span class="token punctuation">(</span><span class="token function">all</span><span class="token punctuation">(</span>sa<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>ll j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> p <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token number">1LL</span><span class="token punctuation">,</span> j <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lim <span class="token operator">=</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      p <span class="token operator">=</span> j<span class="token punctuation">;</span>
+      <span class="token function">iota</span><span class="token punctuation">(</span><span class="token function">all</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">,</span> n <span class="token operator">-</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token keyword">if</span><span class="token punctuation">(</span>sa<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>=</span> j<span class="token punctuation">)</span> y<span class="token punctuation">[</span>p<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> sa<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> j<span class="token punctuation">;</span>
+      <span class="token function">fill</span><span class="token punctuation">(</span><span class="token function">all</span><span class="token punctuation">(</span>ws<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> ws<span class="token punctuation">[</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> lim<span class="token punctuation">)</span> ws<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> ws<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span>ll i <span class="token operator">=</span> n<span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">;</span><span class="token punctuation">)</span> sa<span class="token punctuation">[</span><span class="token operator">--</span>ws<span class="token punctuation">[</span>x<span class="token punctuation">[</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token function">swap</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      p <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      x<span class="token punctuation">[</span>sa<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         ll a <span class="token operator">=</span> sa<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b <span class="token operator">=</span> sa<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+         x<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">==</span> y<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> y<span class="token punctuation">[</span>a <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">==</span> y<span class="token punctuation">[</span>b <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> p <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">:</span> p<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+   <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> rk<span class="token punctuation">[</span>sa<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+   <span class="token keyword">for</span><span class="token punctuation">(</span>ll i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> lcp<span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> k<span class="token operator">--</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>sa<span class="token punctuation">[</span>rk<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">)</span> k<span class="token operator">++</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   sa<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span><span class="token function">begin</span><span class="token punctuation">(</span>sa<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   lcp<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span><span class="token function">begin</span><span class="token punctuation">(</span>lcp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> pair<span class="token punctuation">{</span>sa<span class="token punctuation">,</span> lcp<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+
+    <div class="filename">
         <h2 id="Zalgorithm.hpp">Zalgorithm.hpp</h2>
         md5: f563e6
 
@@ -508,6 +554,138 @@ random_device rnd<span class="token punctuation">;</span>
     <h2 class="section" id="algorithm">algorithm</h2>
 
     <h2 class="section" id="geometry">geometry</h2>
+
+    <h2 class="section" id="memo">memo</h2>
+
+    <div class="filename">
+        <h2 id="Primes.md">Primes.md</h2>
+    </div>
+    <div class="content content-md"><h4>素数の個数</h4>
+<table>
+<thead>
+<tr>
+<th>$n$</th>
+<th>$10^2$</th>
+<th>$10^3$</th>
+<th>$10^4$</th>
+<th>$10^5$</th>
+<th>$10^6$</th>
+<th>$10^7$</th>
+<th>$10^8$</th>
+<th>$10^9$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\pi(n)$</td>
+<td>$25$</td>
+<td>$168$</td>
+<td>$1229$</td>
+<td>$9592$</td>
+<td>$78498$</td>
+<td>$6.6 \times 10^5$</td>
+<td>$5.8 \times 10^6$</td>
+<td>$5.1 \times 10^7$</td>
+</tr>
+</tbody></table>
+<h4>高度合成数</h4>
+<table>
+<thead>
+<tr>
+<th>$≤n$</th>
+<th>$10^3$</th>
+<th>$10^4$</th>
+<th>$10^5$</th>
+<th>$10^6$</th>
+<th>$10^7$</th>
+<th>$10^8$</th>
+<th>$10^9$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$x$</td>
+<td>840</td>
+<td>7560</td>
+<td>83160</td>
+<td>720720</td>
+<td>8648640</td>
+<td>73513440</td>
+<td>735134400</td>
+</tr>
+<tr>
+<td>$d^0(x)$</td>
+<td>32</td>
+<td>64</td>
+<td>128</td>
+<td>240</td>
+<td>448</td>
+<td>768</td>
+<td>1344</td>
+</tr>
+<tr>
+<td>factorization</td>
+<td>3111</td>
+<td>3311</td>
+<td>33111</td>
+<td>421111</td>
+<td>631111</td>
+<td>5311111</td>
+<td>6321111</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>$≤n$</th>
+<th>$10^{10}$</th>
+<th>$10^{11}$</th>
+<th>$10^{12}$</th>
+<th>$10^{13}$</th>
+<th>$10^{14}$</th>
+<th>$10^{15}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$d^0(x)$</td>
+<td>2304</td>
+<td>4032</td>
+<td>6720</td>
+<td>10752</td>
+<td>17280</td>
+<td>26880</td>
+</tr>
+<tr>
+<td>factor</td>
+<td>53211111</td>
+<td>63221111</td>
+<td>642111111</td>
+<td>6321111111</td>
+<td>5422111111</td>
+<td>64211111111</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>$≤n$</th>
+<th>$10^{16}$</th>
+<th>$10^{17}$</th>
+<th>$10^{18}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$d^0(x)$</td>
+<td>41472</td>
+<td>64512</td>
+<td>103680</td>
+</tr>
+<tr>
+<td>factor</td>
+<td>83221111111</td>
+<td>632211111111</td>
+<td>842211111111</td>
+</tr>
+</tbody></table>
+</div>
 
 </body>
 </html>

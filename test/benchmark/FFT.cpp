@@ -35,8 +35,7 @@ int main() {
       rep(i, 0, N) A[i] = B[i] = i;
       auto s = system_clock::now();
       auto C = fft2::conv(A, B);
-      cout << format("my fast FFT: {} ms", duration_cast<milliseconds>(system_clock::now() - s).count())
-           << endl;
+      cout << format("my fast FFT: {} ms", duration_cast<milliseconds>(system_clock::now() - s).count()) << endl;
    }
    {
       vector<atcoder::modint998244353> A(N), B(N);

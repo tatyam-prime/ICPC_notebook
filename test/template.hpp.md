@@ -22,6 +22,12 @@ data:
     path: test/modint/modint.test.cpp
     title: test/modint/modint.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/KMP.test.cpp
+    title: test/string/KMP.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/LCP.test.cpp
+    title: test/string/LCP.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/RollingHash.test.cpp
     title: test/string/RollingHash.test.cpp
   - icon: ':heavy_check_mark:'
@@ -50,10 +56,12 @@ data:
   isVerificationFile: false
   path: test/template.hpp
   requiredBy: []
-  timestamp: '2024-04-04 11:44:57+09:00'
+  timestamp: '2024-04-04 13:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Zalgorithm.test.cpp
+  - test/string/LCP.test.cpp
+  - test/string/KMP.test.cpp
   - test/string/RollingHash.test.cpp
   - test/string/SuffixArray.test.cpp
   - test/FPS/FFT_fast.test.cpp

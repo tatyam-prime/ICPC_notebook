@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/suffixarray
+    PROBLEM: https://judge.yosupo.jp/problem/number_of_substrings
     links:
-    - https://judge.yosupo.jp/problem/suffixarray
-  bundledCode: "#line 1 \"test/string/SuffixArray.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\
+    - https://judge.yosupo.jp/problem/number_of_substrings
+  bundledCode: "#line 1 \"test/string/LCP.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_substrings\"\
     \n#line 1 \"test/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\nconst ll INF = LLONG_MAX / 4;\n#define rep(i, a, b) for(ll\
     \ i = a; i < (b); i++)\n#define all(a) begin(a), end(a)\n#define sz(a) ssize(a)\n\
@@ -37,28 +37,28 @@ data:
     \ j] == y[b + j]) ? p - 1 : p++;\n      }\n   }\n   rep(i, 1, n) rk[sa[i]] = i;\n\
     \   for(ll i = 0, k = 0; i < n - 1; lcp[rk[i++]] = k) {\n      if(k) k--;\n  \
     \    while(s[i + k] == s[sa[rk[i] - 1] + k]) k++;\n   }\n   sa.erase(begin(sa));\n\
-    \   lcp.erase(begin(lcp));\n   return pair{sa, lcp};\n}\n#line 4 \"test/string/SuffixArray.test.cpp\"\
+    \   lcp.erase(begin(lcp));\n   return pair{sa, lcp};\n}\n#line 4 \"test/string/LCP.test.cpp\"\
     \n\nint main() {\n   cin.tie(0)->sync_with_stdio(0);\n   string S;\n   cin >>\
-    \ S;\n   const ll N = sz(S);\n   auto [sa, lcp] = SA(S);\n   rep(i, 0, N) cout\
-    \ << sa[i] << \" \\n\"[i + 1 == N];\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/suffixarray\"\n#include\
-    \ \"test/template.hpp\"\n#include \"src/string/SuffixArray.hpp\"\n\nint main()\
-    \ {\n   cin.tie(0)->sync_with_stdio(0);\n   string S;\n   cin >> S;\n   const\
-    \ ll N = sz(S);\n   auto [sa, lcp] = SA(S);\n   rep(i, 0, N) cout << sa[i] <<\
-    \ \" \\n\"[i + 1 == N];\n}\n"
+    \ S;\n   const ll N = sz(S);\n   auto [sa, lcp] = SA(S);\n   cout << N * (N +\
+    \ 1) / 2 - accumulate(all(lcp), 0LL) << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_substrings\"\n\
+    #include \"test/template.hpp\"\n#include \"src/string/SuffixArray.hpp\"\n\nint\
+    \ main() {\n   cin.tie(0)->sync_with_stdio(0);\n   string S;\n   cin >> S;\n \
+    \  const ll N = sz(S);\n   auto [sa, lcp] = SA(S);\n   cout << N * (N + 1) / 2\
+    \ - accumulate(all(lcp), 0LL) << endl;\n}\n"
   dependsOn:
   - test/template.hpp
   - src/string/SuffixArray.hpp
   isVerificationFile: true
-  path: test/string/SuffixArray.test.cpp
+  path: test/string/LCP.test.cpp
   requiredBy: []
   timestamp: '2024-04-04 13:43:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/string/SuffixArray.test.cpp
+documentation_of: test/string/LCP.test.cpp
 layout: document
 redirect_from:
-- /verify/test/string/SuffixArray.test.cpp
-- /verify/test/string/SuffixArray.test.cpp.html
-title: test/string/SuffixArray.test.cpp
+- /verify/test/string/LCP.test.cpp
+- /verify/test/string/LCP.test.cpp.html
+title: test/string/LCP.test.cpp
 ---

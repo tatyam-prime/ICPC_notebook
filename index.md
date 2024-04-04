@@ -34,6 +34,9 @@ data:
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/string/KMP.hpp
+      title: "KMP \u6CD5 (Knuth\u2013Morris\u2013Pratt algorithm)"
+    - icon: ':heavy_check_mark:'
       path: src/string/RollingHash.hpp
       title: Rolling Hash
     - icon: ':heavy_check_mark:'
@@ -79,6 +82,12 @@ data:
       title: test/modint/modint.test.cpp
   - name: test/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/KMP.test.cpp
+      title: test/string/KMP.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/string/LCP.test.cpp
+      title: test/string/LCP.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/RollingHash.test.cpp
       title: test/string/RollingHash.test.cpp

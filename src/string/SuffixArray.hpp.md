@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/string/LCP.test.cpp
+    title: test/string/LCP.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
   _isVerificationFailed: false
@@ -44,9 +47,10 @@ data:
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2024-04-04 11:44:57+09:00'
+  timestamp: '2024-04-04 13:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/string/LCP.test.cpp
   - test/string/SuffixArray.test.cpp
 documentation_of: src/string/SuffixArray.hpp
 layout: document

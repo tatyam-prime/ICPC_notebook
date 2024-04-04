@@ -11,13 +11,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/string/Zalgorithm.hpp\"\n// Z[i] := LCP(s, s[i:])  \
-    \    abacaba -> 7010301\nauto Z(const string& s) {\n   vector<ll> z(sz(s), sz(s));\n\
+  bundledCode: "#line 1 \"src/string/Zalgorithm.hpp\"\n// Z[i] := LCP(s, s[i:])\n\
+    // abacaba -> 7010301\nauto Z(const string& s) {\n   vector<ll> z(sz(s), sz(s));\n\
     \   ll l = -1, r = -1;\n   rep(i, 1, sz(s)) {\n      z[i] = i >= r ? 0 : min(r\
     \ - i, z[i - l]);\n      while(i + z[i] < sz(s) && s[i + z[i]] == s[z[i]]) z[i]++;\n\
     \      if(i + z[i] > r) {\n         l = i;\n         r = i + z[i];\n      }\n\
     \   }\n   return z;\n}\n"
-  code: "// Z[i] := LCP(s, s[i:])      abacaba -> 7010301\nauto Z(const string& s)\
+  code: "// Z[i] := LCP(s, s[i:])\n// abacaba -> 7010301\nauto Z(const string& s)\
     \ {\n   vector<ll> z(sz(s), sz(s));\n   ll l = -1, r = -1;\n   rep(i, 1, sz(s))\
     \ {\n      z[i] = i >= r ? 0 : min(r - i, z[i - l]);\n      while(i + z[i] < sz(s)\
     \ && s[i + z[i]] == s[z[i]]) z[i]++;\n      if(i + z[i] > r) {\n         l = i;\n\
@@ -26,7 +26,7 @@ data:
   isVerificationFile: false
   path: src/string/Zalgorithm.hpp
   requiredBy: []
-  timestamp: '2024-04-04 11:44:57+09:00'
+  timestamp: '2024-04-04 13:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Zalgorithm.test.cpp

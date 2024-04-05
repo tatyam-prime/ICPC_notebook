@@ -11,38 +11,38 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"src/FPS/FFT.hpp\"\n// {998244353, 3}, {754974721, 11}, {167772161,\
-    \ 3}, {469762049, 3}, {2130706433, 3}\nmm g = 3;  // \u539F\u59CB\u6839\nvoid\
-    \ fft(vector<mm>& a) {\n   ll n = sz(a), lg = bit_width<size_t>(n) - 1;\n   //\
-    \   assert((1 << lg) == n);\n   vector<mm> b(n);\n   rep(l, 1, lg + 1) {\n   \
-    \   ll w = n >> l;\n      mm s = 1, r = g.pow(mod >> l);\n      for(ll u = 0;\
-    \ u < n / 2; u += w) {\n         rep(d, 0, w) {\n            mm x = a[u << 1 |\
-    \ d], y = a[u << 1 | w | d] * s;\n            b[u | d] = x + y;\n            b[n\
-    \ >> 1 | u | d] = x - y;\n         }\n         s *= r;\n      }\n      swap(a,\
-    \ b);\n   }\n}\nvector<mm> conv(vector<mm> a, vector<mm> b) {\n   if(a.empty()\
+  bundledCode: "#line 1 \"src/FPS/FFT.hpp\"\n// {998244353, 3}, {1811939329, 13},\
+    \ {2013265921, 31}\nmm g = 3;  // \u539F\u59CB\u6839\nvoid fft(vector<mm>& a)\
+    \ {\n   ll n = sz(a), lg = bit_width<size_t>(n) - 1;\n   //   assert((1 << lg)\
+    \ == n);\n   vector<mm> b(n);\n   rep(l, 1, lg + 1) {\n      ll w = n >> l;\n\
+    \      mm s = 1, r = g.pow(mod >> l);\n      for(ll u = 0; u < n / 2; u += w)\
+    \ {\n         rep(d, 0, w) {\n            mm x = a[u << 1 | d], y = a[u << 1 |\
+    \ w | d] * s;\n            b[u | d] = x + y;\n            b[n >> 1 | u | d] =\
+    \ x - y;\n         }\n         s *= r;\n      }\n      swap(a, b);\n   }\n}\n\
+    vector<mm> conv(vector<mm> a, vector<mm> b) {\n   if(a.empty() || b.empty()) return\
+    \ {};\n   size_t s = sz(a) + sz(b) - 1, n = bit_ceil(s);\n   // if(min(sz(a),\
+    \ sz(b)) <= 60) \u611A\u76F4\u306B\u639B\u3051\u7B97\n   a.resize(n);\n   b.resize(n);\n\
+    \   fft(a);\n   fft(b);\n   mm inv = mm(n).inv();\n   rep(i, 0, n) a[i] *= b[i]\
+    \ * inv;\n   reverse(1 + all(a));\n   fft(a);\n   a.resize(s);\n   return a;\n\
+    }\n"
+  code: "// {998244353, 3}, {1811939329, 13}, {2013265921, 31}\nmm g = 3;  // \u539F\
+    \u59CB\u6839\nvoid fft(vector<mm>& a) {\n   ll n = sz(a), lg = bit_width<size_t>(n)\
+    \ - 1;\n   //   assert((1 << lg) == n);\n   vector<mm> b(n);\n   rep(l, 1, lg\
+    \ + 1) {\n      ll w = n >> l;\n      mm s = 1, r = g.pow(mod >> l);\n      for(ll\
+    \ u = 0; u < n / 2; u += w) {\n         rep(d, 0, w) {\n            mm x = a[u\
+    \ << 1 | d], y = a[u << 1 | w | d] * s;\n            b[u | d] = x + y;\n     \
+    \       b[n >> 1 | u | d] = x - y;\n         }\n         s *= r;\n      }\n  \
+    \    swap(a, b);\n   }\n}\nvector<mm> conv(vector<mm> a, vector<mm> b) {\n   if(a.empty()\
     \ || b.empty()) return {};\n   size_t s = sz(a) + sz(b) - 1, n = bit_ceil(s);\n\
     \   // if(min(sz(a), sz(b)) <= 60) \u611A\u76F4\u306B\u639B\u3051\u7B97\n   a.resize(n);\n\
     \   b.resize(n);\n   fft(a);\n   fft(b);\n   mm inv = mm(n).inv();\n   rep(i,\
     \ 0, n) a[i] *= b[i] * inv;\n   reverse(1 + all(a));\n   fft(a);\n   a.resize(s);\n\
     \   return a;\n}\n"
-  code: "// {998244353, 3}, {754974721, 11}, {167772161, 3}, {469762049, 3}, {2130706433,\
-    \ 3}\nmm g = 3;  // \u539F\u59CB\u6839\nvoid fft(vector<mm>& a) {\n   ll n = sz(a),\
-    \ lg = bit_width<size_t>(n) - 1;\n   //   assert((1 << lg) == n);\n   vector<mm>\
-    \ b(n);\n   rep(l, 1, lg + 1) {\n      ll w = n >> l;\n      mm s = 1, r = g.pow(mod\
-    \ >> l);\n      for(ll u = 0; u < n / 2; u += w) {\n         rep(d, 0, w) {\n\
-    \            mm x = a[u << 1 | d], y = a[u << 1 | w | d] * s;\n            b[u\
-    \ | d] = x + y;\n            b[n >> 1 | u | d] = x - y;\n         }\n        \
-    \ s *= r;\n      }\n      swap(a, b);\n   }\n}\nvector<mm> conv(vector<mm> a,\
-    \ vector<mm> b) {\n   if(a.empty() || b.empty()) return {};\n   size_t s = sz(a)\
-    \ + sz(b) - 1, n = bit_ceil(s);\n   // if(min(sz(a), sz(b)) <= 60) \u611A\u76F4\
-    \u306B\u639B\u3051\u7B97\n   a.resize(n);\n   b.resize(n);\n   fft(a);\n   fft(b);\n\
-    \   mm inv = mm(n).inv();\n   rep(i, 0, n) a[i] *= b[i] * inv;\n   reverse(1 +\
-    \ all(a));\n   fft(a);\n   a.resize(s);\n   return a;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: src/FPS/FFT.hpp
   requiredBy: []
-  timestamp: '2024-04-04 13:43:58+09:00'
+  timestamp: '2024-04-06 01:55:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPS/FFT.test.cpp

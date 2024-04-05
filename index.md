@@ -37,6 +37,9 @@ data:
       path: src/string/KMP.hpp
       title: "KMP \u6CD5 (Knuth\u2013Morris\u2013Pratt algorithm)"
     - icon: ':heavy_check_mark:'
+      path: src/string/Manacher.hpp
+      title: Manacher's algorithm
+    - icon: ':heavy_check_mark:'
       path: src/string/RollingHash.hpp
       title: Rolling Hash
     - icon: ':heavy_check_mark:'
@@ -88,6 +91,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/string/LCP.test.cpp
       title: test/string/LCP.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/string/Manacher.test.cpp
+      title: test/string/Manacher.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/RollingHash.test.cpp
       title: test/string/RollingHash.test.cpp

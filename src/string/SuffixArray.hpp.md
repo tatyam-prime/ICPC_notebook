@@ -47,11 +47,11 @@ data:
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2024-04-06 01:55:36+09:00'
+  timestamp: '2024-05-24 10:03:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/string/SuffixArray.test.cpp
   - test/string/LCP.test.cpp
+  - test/string/SuffixArray.test.cpp
 documentation_of: src/string/SuffixArray.hpp
 layout: document
 title: Suffix Array

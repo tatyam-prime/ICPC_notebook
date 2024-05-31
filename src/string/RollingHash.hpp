@@ -15,7 +15,7 @@ struct RH {
    ll n;
    vector<u64> hs, pw;
    RH(string s) : n(sz(s)), hs(n + 1), pw(n + 1, 1) {
-      for(ll i = 0; i < n; i++) {
+      rep(i, 0, n) {
          pw[i + 1] = mul(pw[i], r);
          hs[i + 1] = add(mul(hs[i], r), s[i]);
       }

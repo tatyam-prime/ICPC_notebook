@@ -286,15 +286,15 @@ setxkbmap <span class="token parameter variable">-option</span> ctrl:nocaps
 
     <div class="filename">
         <h2 id="FFT.hpp">FFT.hpp</h2>
-        md5: 104a28
+        md5: 3138c7
 
     </div>
     <div class="content content-hpp">
     <pre><code><span class="token comment">// {998244353, 3}, {1811939329, 13}, {2013265921, 31}</span>
 mm g <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>  <span class="token comment">// 原始根</span>
 <span class="token keyword">void</span> <span class="token function">fft</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>mm<span class="token operator">></span><span class="token operator">&amp;</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   ll n <span class="token operator">=</span> <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> lg <span class="token operator">=</span> <span class="token generic-function"><span class="token function">bit_width</span><span class="token generic class-name"><span class="token operator">&lt;</span>size_t<span class="token operator">></span></span></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-   <span class="token comment">//   assert((1 &lt;&lt; lg) == n);</span>
+   ll n <span class="token operator">=</span> <span class="token function">sz</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> lg <span class="token operator">=</span> <span class="token function">__lg</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">assert</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> lg<span class="token punctuation">)</span> <span class="token operator">==</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
    vector<span class="token operator">&lt;</span>mm<span class="token operator">></span> <span class="token function">b</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token function">rep</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> lg <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       ll w <span class="token operator">=</span> n <span class="token operator">>></span> l<span class="token punctuation">;</span>
@@ -451,13 +451,13 @@ vector<span class="token operator">&lt;</span>mm<span class="token operator">></
 
     <div class="filename">
         <h2 id="KMP.hpp">KMP.hpp</h2>
-        md5: 1aa978
+        md5: 886c63
 
     </div>
     <div class="content content-hpp">
     <pre><code><span class="token comment">// kmp[i] := max{ l ≤ i | s[:l] == s[(i+1)-l:i+1] }</span>
 <span class="token comment">// abacaba -> 0010123</span>
-vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> <span class="token function">KMP</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">auto</span> <span class="token function">KMP</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
    vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       ll g <span class="token operator">=</span> p<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -499,7 +499,7 @@ vector<span class="token operator">&lt;</span>ll<span class="token operator">></
 
     <div class="filename">
         <h2 id="RollingHash.hpp">RollingHash.hpp</h2>
-        md5: 282178
+        md5: adb8d3
 
     </div>
     <div class="content content-hpp">
@@ -520,13 +520,14 @@ random_device rnd<span class="token punctuation">;</span>
    ll n<span class="token punctuation">;</span>
    vector<span class="token operator">&lt;</span>u64<span class="token operator">></span> hs<span class="token punctuation">,</span> pw<span class="token punctuation">;</span>
    <span class="token function">RH</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">n</span><span class="token punctuation">(</span><span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">hs</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">pw</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span><span class="token punctuation">(</span>ll i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
          pw<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">mul</span><span class="token punctuation">(</span>pw<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>
          hs<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token function">mul</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">,</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
    <span class="token punctuation">}</span>
    u64 <span class="token function">get</span><span class="token punctuation">(</span>ll l<span class="token punctuation">,</span> ll r<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">add</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">,</span> mod <span class="token operator">-</span> <span class="token function">mul</span><span class="token punctuation">(</span>hs<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> pw<span class="token punctuation">[</span>r <span class="token operator">-</span> l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
 </div>
 
     <div class="filename">
@@ -573,22 +574,19 @@ random_device rnd<span class="token punctuation">;</span>
 
     <div class="filename">
         <h2 id="Zalgorithm.hpp">Zalgorithm.hpp</h2>
-        md5: cde108
+        md5: b20b04
 
     </div>
     <div class="content content-hpp">
     <pre><code><span class="token comment">// Z[i] := LCP(s, s[i:])</span>
 <span class="token comment">// abacaba -> 7010301</span>
-<span class="token keyword">auto</span> <span class="token function">Z</span><span class="token punctuation">(</span><span class="token keyword">const</span> string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> <span class="token function">z</span><span class="token punctuation">(</span><span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   ll l <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-   <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">>=</span> r <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token function">min</span><span class="token punctuation">(</span>r <span class="token operator">-</span> i<span class="token punctuation">,</span> z<span class="token punctuation">[</span>i <span class="token operator">-</span> l<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-      <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         l <span class="token operator">=</span> i<span class="token punctuation">;</span>
-         r <span class="token operator">=</span> i <span class="token operator">+</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
+<span class="token keyword">auto</span> <span class="token function">Z</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   ll n <span class="token operator">=</span> <span class="token function">sz</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">,</span> l <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+   vector<span class="token operator">&lt;</span>ll<span class="token operator">></span> <span class="token function">z</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      ll<span class="token operator">&amp;</span> x <span class="token operator">=</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">&lt;</span> r <span class="token operator">?</span> <span class="token function">min</span><span class="token punctuation">(</span>r <span class="token operator">-</span> i<span class="token punctuation">,</span> z<span class="token punctuation">[</span>i <span class="token operator">-</span> l<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">+</span> x <span class="token operator">&lt;</span> n <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i <span class="token operator">+</span> x<span class="token punctuation">]</span> <span class="token operator">==</span> s<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> x<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">+</span> x <span class="token operator">></span> r<span class="token punctuation">)</span> l <span class="token operator">=</span> i<span class="token punctuation">,</span> r <span class="token operator">=</span> i <span class="token operator">+</span> x<span class="token punctuation">;</span>
    <span class="token punctuation">}</span>
    <span class="token keyword">return</span> z<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -665,16 +663,6 @@ random_device rnd<span class="token punctuation">;</span>
 <td>768</td>
 <td>1344</td>
 </tr>
-<tr>
-<td>factor</td>
-<td>3111</td>
-<td>3311</td>
-<td>33111</td>
-<td>421111</td>
-<td>631111</td>
-<td>5311111</td>
-<td>6321111</td>
-</tr>
 </tbody></table>
 <table>
 <thead>
@@ -686,6 +674,9 @@ random_device rnd<span class="token punctuation">;</span>
 <th>$10^{13}$</th>
 <th>$10^{14}$</th>
 <th>$10^{15}$</th>
+<th>$10^{16}$</th>
+<th>$10^{17}$</th>
+<th>$10^{18}$</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -696,37 +687,65 @@ random_device rnd<span class="token punctuation">;</span>
 <td>10752</td>
 <td>17280</td>
 <td>26880</td>
-</tr>
-<tr>
-<td>factor</td>
-<td>53211111</td>
-<td>63221111</td>
-<td>642111111</td>
-<td>6321111111</td>
-<td>5422111111</td>
-<td>64211111111</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>$≤n$</th>
-<th>$10^{16}$</th>
-<th>$10^{17}$</th>
-<th>$10^{18}$</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$d^0(x)$</td>
 <td>41472</td>
 <td>64512</td>
 <td>103680</td>
 </tr>
+</tbody></table>
+<h4>素数階乗</h4>
+<table>
+<thead>
 <tr>
-<td>factor</td>
-<td>83221111111</td>
-<td>632211111111</td>
-<td>842211111111</td>
+<th>$n$</th>
+<th>$2$</th>
+<th>$3$</th>
+<th>$5$</th>
+<th>$7$</th>
+<th>$11$</th>
+<th>$13$</th>
+<th>$17$</th>
+<th>$19$</th>
+<th>$23$</th>
+<th>$29$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$n\#$</td>
+<td>2</td>
+<td>6</td>
+<td>30</td>
+<td>210</td>
+<td>2310</td>
+<td>30030</td>
+<td>510510</td>
+<td>9699690</td>
+<td>$2.2 \times 10^8$</td>
+<td>$6.5 \times 10^9$</td>
+</tr>
+</tbody></table>
+<h4>階乗</h4>
+<table>
+<thead>
+<tr>
+<th>$5!$</th>
+<th>$6!$</th>
+<th>$7!$</th>
+<th>$8!$</th>
+<th>$9!$</th>
+<th>$10!$</th>
+<th>$11!$</th>
+<th>$12!$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>120</td>
+<td>720</td>
+<td>5040</td>
+<td>40320</td>
+<td>362880</td>
+<td>3628800</td>
+<td>$4.0 \times 10^7$</td>
+<td>$4.8 \times 10^8$</td>
 </tr>
 </tbody></table>
 </div>

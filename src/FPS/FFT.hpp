@@ -1,8 +1,8 @@
 // {998244353, 3}, {1811939329, 13}, {2013265921, 31}
 mm g = 3;  // 原始根
 void fft(vector<mm>& a) {
-   ll n = sz(a), lg = bit_width<size_t>(n) - 1;
-   //   assert((1 << lg) == n);
+   ll n = sz(a), lg = __lg(n);
+   assert((1 << lg) == n);
    vector<mm> b(n);
    rep(l, 1, lg + 1) {
       ll w = n >> l;

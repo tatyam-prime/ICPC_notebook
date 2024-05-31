@@ -28,7 +28,7 @@ $O(n \log n)$ 時間
 
 | $2^{20} + 2^{20}$ の畳み込み | 所要時間 |
 | --- | --- |
-| 簡易 modint + 簡易 FFT | 300 ms |
-| 32 bit で加減算をちゃんと書いた modint + bit reversal FFT | 123 ms |
+| [簡易 modint](../modint/modint.hpp) + 簡易 FFT (これ) | 300 ms |
+| [32 bit で加減算をちゃんと書いた modint](../extra/modint_fast.hpp) + [bit reversal FFT](FFT_fast.hpp) | 123 ms |
 | [AC Library](https://github.com/atcoder/ac-library/blob/d8ca7f26686f6c78d15d13ca438ea866526e87fb/atcoder/convolution.hpp) | 79 ms |
 | [Nyaan さんの AVX2 FFT](https://nyaannyaan.github.io/library/verify/verify-yosupo-ntt/yosupo-convolution-ntt-avx2.test.cpp) | 43 ms |

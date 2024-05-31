@@ -20,7 +20,7 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip'
-        cache-dependency-path: 
+        cache-dependency-path: ''
     
     - name: Install online-judge-verify-helper
       run: pip3 install -U online-judge-verify-helper

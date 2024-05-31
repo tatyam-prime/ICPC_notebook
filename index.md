@@ -22,12 +22,13 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/extra/modint_fast.hpp
-      title: src/extra/modint_fast.hpp
+      title: "32 bit \u3067\u52A0\u6E1B\u7B97\u3092\u3061\u3083\u3093\u3068\u66F8\u3044\
+        \u305F Modint"
   - name: src/modint
     pages:
     - icon: ':heavy_check_mark:'
       path: src/modint/BarrettReduction.hpp
-      title: src/modint/BarrettReduction.hpp
+      title: Barrett Reduction
     - icon: ':heavy_check_mark:'
       path: src/modint/modint.hpp
       title: Modint
@@ -103,6 +104,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/string/Zalgorithm.test.cpp
       title: test/string/Zalgorithm.test.cpp
+  - name: test
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/template.test.cpp
+      title: test/template.test.cpp
 layout: toppage
 ---
 みんなでつくる最強の ICPC 用ライブラリ (予定)

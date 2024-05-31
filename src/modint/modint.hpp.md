@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: src/modint/modint.hpp
   requiredBy: []
-  timestamp: '2024-05-31 17:02:38+09:00'
+  timestamp: '2024-05-31 19:01:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/FPS/FFT.test.cpp
@@ -54,3 +54,7 @@ layout: document
 title: Modint
 ---
 
+- タイプ速度重視の簡易 modint
+- 速度が欲しいとき：[32 bit で加減算をちゃんと書いた Modint](../extra/modint_fast.hpp)
+- mod が素数でないとき：inv を extgcd にする
+- mod が実行時に決まり，これを高速化したいとき：[Barrett Reduction](./BarrettReduction.hpp)

@@ -16,23 +16,23 @@ data:
     \ mod;\n   return a;\n}\nu64 mul(u64 a, u64 b) {\n   auto c = (__uint128_t)a *\
     \ b;\n   return add(c >> 61, c & mod);\n}\nrandom_device rnd;\nconst u64 r = ((u64)rnd()\
     \ << 32 | rnd()) % mod;\nstruct RH {\n   ll n;\n   vector<u64> hs, pw;\n   RH(string\
-    \ s) : n(sz(s)), hs(n + 1), pw(n + 1, 1) {\n      for(ll i = 0; i < n; i++) {\n\
-    \         pw[i + 1] = mul(pw[i], r);\n         hs[i + 1] = add(mul(hs[i], r),\
-    \ s[i]);\n      }\n   }\n   u64 get(ll l, ll r) const { return add(hs[r], mod\
-    \ - mul(hs[l], pw[r - l])); }\n};\n"
+    \ s) : n(sz(s)), hs(n + 1), pw(n + 1, 1) {\n      rep(i, 0, n) {\n         pw[i\
+    \ + 1] = mul(pw[i], r);\n         hs[i + 1] = add(mul(hs[i], r), s[i]);\n    \
+    \  }\n   }\n   u64 get(ll l, ll r) const { return add(hs[r], mod - mul(hs[l],\
+    \ pw[r - l])); }\n};\n"
   code: "// using u64 = uint64_t;\nconst u64 mod = INF;\nu64 add(u64 a, u64 b) {\n\
     \   a += b;\n   if(a >= mod) a -= mod;\n   return a;\n}\nu64 mul(u64 a, u64 b)\
     \ {\n   auto c = (__uint128_t)a * b;\n   return add(c >> 61, c & mod);\n}\nrandom_device\
     \ rnd;\nconst u64 r = ((u64)rnd() << 32 | rnd()) % mod;\nstruct RH {\n   ll n;\n\
     \   vector<u64> hs, pw;\n   RH(string s) : n(sz(s)), hs(n + 1), pw(n + 1, 1) {\n\
-    \      for(ll i = 0; i < n; i++) {\n         pw[i + 1] = mul(pw[i], r);\n    \
-    \     hs[i + 1] = add(mul(hs[i], r), s[i]);\n      }\n   }\n   u64 get(ll l, ll\
-    \ r) const { return add(hs[r], mod - mul(hs[l], pw[r - l])); }\n};"
+    \      rep(i, 0, n) {\n         pw[i + 1] = mul(pw[i], r);\n         hs[i + 1]\
+    \ = add(mul(hs[i], r), s[i]);\n      }\n   }\n   u64 get(ll l, ll r) const { return\
+    \ add(hs[r], mod - mul(hs[l], pw[r - l])); }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: src/string/RollingHash.hpp
   requiredBy: []
-  timestamp: '2024-05-31 17:02:38+09:00'
+  timestamp: '2024-05-31 19:01:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/RollingHash.test.cpp
@@ -51,7 +51,7 @@ title: Rolling Hash
     - このとき，長さ $n$ の文字列 $s$ の hash は $(s[0] r^{n-1} + s[1] r^{n-2} + \dots + s[n-1] r^0) \bmod P$ で計算される
     - $O(1)$ 時間
 
-## その他の使い方
+## 使い方 (応用編)
 
 - LCP (Longest Common Prefix) を求めたいとき：LCP の長さを二分探索すれば，$O(\log n)$ 時間 / query
 - 文字列を辞書順で比較したいとき：LCP の長さを二分探索すれば，$O(\log n)$ 時間 / query
@@ -60,5 +60,5 @@ title: Rolling Hash
 
 - $2$ つの異なる長さ $n$ 以下の文字列が衝突する確率は $\frac{n}{P}$ 以下
     - 参考資料：[Schwartz–Zippel lemma による hash の解析 – noshi91](https://github.com/noshi91/blog/blob/master/pages/hash.pdf)
-- $m$ 個の異なる $n$ 文字の文字列がどこかで衝突する確率は，$\frac{n \cdot \binom{m}{2}}{P}$ 以下
+- 相異なる $n$ 文字の文字列 $m$ 個がどこかで衝突する確率は，$\frac{n \cdot \binom{m}{2}}{P}$ 以下
     - $(n, m) = (1, 10^6)$ を $100$ ケースやっても $0.002\%$ なので，衝突は基本的に無視できる

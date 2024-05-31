@@ -12,19 +12,19 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"src/string/KMP.hpp\"\n// kmp[i] := max{ l \u2264 i | s[:l]\
-    \ == s[(i+1)-l:i+1] }\n// abacaba -> 0010123\nvector<ll> KMP(string s) {\n   vector<ll>\
+    \ == s[(i+1)-l:i+1] }\n// abacaba -> 0010123\nauto KMP(string s) {\n   vector<ll>\
     \ p(sz(s));\n   rep(i, 1, sz(s)) {\n      ll g = p[i - 1];\n      while(g && s[i]\
     \ != s[g]) g = p[g - 1];\n      p[i] = g + (s[i] == s[g]);\n   }\n   return p;\n\
     }\n"
   code: "// kmp[i] := max{ l \u2264 i | s[:l] == s[(i+1)-l:i+1] }\n// abacaba -> 0010123\n\
-    vector<ll> KMP(string s) {\n   vector<ll> p(sz(s));\n   rep(i, 1, sz(s)) {\n \
-    \     ll g = p[i - 1];\n      while(g && s[i] != s[g]) g = p[g - 1];\n      p[i]\
-    \ = g + (s[i] == s[g]);\n   }\n   return p;\n}\n"
+    auto KMP(string s) {\n   vector<ll> p(sz(s));\n   rep(i, 1, sz(s)) {\n      ll\
+    \ g = p[i - 1];\n      while(g && s[i] != s[g]) g = p[g - 1];\n      p[i] = g\
+    \ + (s[i] == s[g]);\n   }\n   return p;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: src/string/KMP.hpp
   requiredBy: []
-  timestamp: '2024-05-31 17:02:38+09:00'
+  timestamp: '2024-05-31 19:01:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/KMP.test.cpp

@@ -27,8 +27,8 @@ data:
   - name: src/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/math/FastGCD.hpp
-      title: src/math/FastGCD.hpp
+      path: src/math/BinaryGCD.hpp
+      title: Binary GCD
   - name: src/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -84,8 +84,8 @@ data:
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/math/FastGCD.test.cpp
-      title: test/math/FastGCD.test.cpp
+      path: test/math/BinaryGCD.test.cpp
+      title: test/math/BinaryGCD.test.cpp
   - name: test/modint
     pages:
     - icon: ':heavy_check_mark:'

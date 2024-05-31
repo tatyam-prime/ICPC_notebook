@@ -16,8 +16,8 @@ data:
     path: test/data-structure/FastSet.test.cpp
     title: test/data-structure/FastSet.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/math/FastGCD.test.cpp
-    title: test/math/FastGCD.test.cpp
+    path: test/math/BinaryGCD.test.cpp
+    title: test/math/BinaryGCD.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/modint/BarrettReduction.test.cpp
     title: test/modint/BarrettReduction.test.cpp
@@ -108,7 +108,7 @@ data:
   - test/string/SuffixArray.test.cpp
   - test/string/RollingHash.test.cpp
   - test/string/Manacher.test.cpp
-  - test/math/FastGCD.test.cpp
+  - test/math/BinaryGCD.test.cpp
   - test/modint/BarrettReduction.test.cpp
   - test/modint/modint.test.cpp
 documentation_of: test/template.hpp

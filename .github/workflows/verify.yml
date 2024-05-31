@@ -23,6 +23,7 @@ jobs:
 
     - name: Cache judge data
       uses: actions/cache@v4
+      id: cache-judge-data
       with:
         path: |
           .verify-helper/cache/

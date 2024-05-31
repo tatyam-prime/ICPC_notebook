@@ -47,7 +47,7 @@ data:
   isVerificationFile: true
   path: test/data-structure/BIT.test.cpp
   requiredBy: []
-  timestamp: '2024-05-31 19:01:26+09:00'
+  timestamp: '2024-05-31 19:00:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data-structure/BIT.test.cpp

@@ -29,11 +29,12 @@ jobs:
     - name: Restore cached judge data
       uses: actions/cache@v4
       with:
+        key: cache-judge-data
         path: |
           .verify-helper/cache/
           ~/.cache/online-judge-tools/library-checker-problems/
           ~/.local/share/online-judge-tools/
-        key: cache-judge-data
+        save-always: true
 
     - run: oj-verify all
       env:

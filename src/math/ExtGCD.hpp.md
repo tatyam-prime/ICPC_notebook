@@ -42,6 +42,10 @@ title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5
 - `ll extgcd(ll a, ll b, ll& x, ll& y)`：$\text{gcd}(a, b)$ を返す．$(x, y)$ には，$ax + by = \text{gcd}(a, b)$ の整数解であって $\|x\| + \|y\|$ が最小のものが代入される．
     - $O(\log(x + y))$ 時間
 
+## 使い方 (応用)
+
+- モジュロ逆元 `modinv(a, mod)` を求める：`extgcd(a, mod, x, y)` をすると `a * x + mod * y == 1` になるので，`x` が `a` のモジュロ逆元である．
+
 ## ソラ書きしてみよう
 
 $(1, 0, a)$ と $(0, 1, b)$ に対してユークリッドの互除法をするとできる．

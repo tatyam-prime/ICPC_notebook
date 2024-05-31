@@ -54,4 +54,4 @@ title: Barrett Reduction
 ## 余談
 
 ジャッジが Ice Lake より前の Intel の CPU の場合，64 bit 除算が double 除算より 3 倍以上遅いことが知られている．  
-あまりではなく商が欲しい場合，mod が固定ではない場合，もっと短くかきたい場合は，double 除算や long double 除算を書くと良い． 
+あまりではなく商が欲しい場合，mod が固定ではない場合，もっと短く書きたい場合は，double 除算や long double 除算を書くと良い． 

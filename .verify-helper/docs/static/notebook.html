@@ -38,6 +38,7 @@
     <li><a class="section" href="#math">math</a></li>
     <ol>
     <li><a href="#BinaryGCD.hpp">BinaryGCD.hpp</a></li>
+    <li><a href="#ExtGCD.hpp">ExtGCD.hpp</a></li>
     </ol>
     <li><a class="section" href="#modint">modint</a></li>
     <ol>
@@ -240,6 +241,24 @@ u64 <span class="token function">binary_gcd</span><span class="token punctuation
       <span class="token keyword">else</span> y <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">ctz</span><span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token punctuation">}</span>
    <span class="token keyword">return</span> x <span class="token operator">&lt;&lt;</span> <span class="token function">min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+
+    <div class="filename">
+        <h2 id="ExtGCD.hpp">ExtGCD.hpp</h2>
+        md5: c3fa9b
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code><span class="token comment">// returns gcd(a, b) and assign x, y to integers</span>
+<span class="token comment">// s.t. ax + by = gcd(a, b) and |x| + |y| is minimized</span>
+ll <span class="token function">extgcd</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span> ll b<span class="token punctuation">,</span> ll<span class="token operator">&amp;</span> x<span class="token punctuation">,</span> ll<span class="token operator">&amp;</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// assert(a >= 0 &amp;&amp; b >= 0);</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>b<span class="token punctuation">)</span> <span class="token keyword">return</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> a<span class="token punctuation">;</span>
+   ll d <span class="token operator">=</span> <span class="token function">extgcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   y <span class="token operator">-=</span> a <span class="token operator">/</span> b <span class="token operator">*</span> x<span class="token punctuation">;</span>
+   <span class="token keyword">return</span> d<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 </div>

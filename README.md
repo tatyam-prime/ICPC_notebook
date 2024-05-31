@@ -32,3 +32,11 @@
 2. [build/build.js](build/build.js) の設定項目を変更する
 3. `make build`
 
+## oj-verify で verify
+
+1. `make verify`
+
+## oj-verify ページを手元で生成
+
+1. `make serve`
+

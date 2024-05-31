@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy: []
-  timestamp: '2024-05-31 15:50:32+09:00'
+  timestamp: '2024-05-31 17:02:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/BIT.test.cpp

@@ -18,6 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
+        python-version: '3.x'
         cache: 'pip'
     
     - name: Install online-judge-verify-helper
@@ -37,3 +38,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all
+
+    - run: git switch main

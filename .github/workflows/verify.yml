@@ -19,8 +19,12 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
-    - name: git pull
-      run: git pull
+    - name: Cache judge data
+      uses: actions/cache@v4
+      with:
+        path: |
+          .verify-helper/cache/
+        key: cache-judge-data
 
     - name: Run tests
       env:

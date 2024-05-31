@@ -6,6 +6,10 @@ code {
     font-size: 7.4pt;
 }
 
+nav#toc {
+    break-after: column;
+}
+
 @media print {
     body {
         column-count: 2;

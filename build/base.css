@@ -7,7 +7,6 @@ html,
 code {
     font-family: 'Jetbrains Mono', ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     font-variant-ligatures: none;
-    font-size: 7.5pt;
 }
 
 pre {
@@ -141,7 +140,9 @@ td, th {
 .token.selector .token.attribute {
 	color: #001575;
 }
-
+.content {
+    break-before: avoid;
+}
 .content-md {
     font-family: sans-serif;
 }

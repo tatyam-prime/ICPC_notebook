@@ -7,5 +7,5 @@ int main() {
     assert(chmax(a, 1) == 1);
     assert(chmax(a, 1) == 0);
     assert(chmin(a, 0) == 1);
-    cout << "Hello World" << endl;
+    puts("Hello World");
 }

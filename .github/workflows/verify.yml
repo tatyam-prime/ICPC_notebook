@@ -29,6 +29,7 @@ jobs:
         path: |
           .verify-helper/cache/
           ~/.cache/online-judge-tools/library-checker-problems/
+          ~/.local/share/online-judge-tools/
         key: cache-judge-data
 
     - name: Run tests

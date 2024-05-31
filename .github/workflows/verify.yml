@@ -17,13 +17,14 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v5
-
-    - name: Install dependencies
+      with:
+        cache: 'pip'
+    
+    - name: Install online-judge-verify-helper
       run: pip3 install -U online-judge-verify-helper
 
     - name: Cache judge data
       uses: actions/cache@v4
-      id: cache-judge-data
       with:
         path: |
           .verify-helper/cache/

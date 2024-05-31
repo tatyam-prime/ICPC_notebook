@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/modint/BarrettReduction.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: test/template.hpp
     title: test/template.hpp
   _extendedRequiredBy: []

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/string/KMP.hpp
     title: "KMP \u6CD5 (Knuth\u2013Morris\u2013Pratt algorithm)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: test/template.hpp
     title: test/template.hpp
   _extendedRequiredBy: []

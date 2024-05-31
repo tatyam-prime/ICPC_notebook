@@ -29,6 +29,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/BinaryGCD.hpp
       title: Binary GCD
+    - icon: ':x:'
+      path: src/math/ExtGCD.hpp
+      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
+        \ (Extended Euclidean algorithm)"
   - name: src/modint
     pages:
     - icon: ':heavy_check_mark:'
@@ -61,7 +65,7 @@ data:
       title: src/template/template.hpp
   - name: test
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: test/template.hpp
       title: test/template.hpp
   verificationCategories:
@@ -86,6 +90,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/BinaryGCD.test.cpp
       title: test/math/BinaryGCD.test.cpp
+    - icon: ':x:'
+      path: test/math/ExtGCD.test.cpp
+      title: test/math/ExtGCD.test.cpp
   - name: test/modint
     pages:
     - icon: ':heavy_check_mark:'

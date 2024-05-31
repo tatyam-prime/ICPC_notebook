@@ -7,9 +7,11 @@ int main() {
    string S;
    cin >> S;
    const ll N = sz(S);
-   auto [even, odd] = manacher(S);
-   rep(i, 1, N * 2) cout << [&] {
-      if(i % 2) return odd[i / 2] * 2 + 1;
-      else return even[i / 2] * 2;
-   }() << " \n"[i + 1 == N * 2];
+   string T(N * 2 + 1, '$');
+   rep(i, 0, N) T[i * 2 + 1] = S[i];
+   auto r = manacher(T);
+   rep(i, 1, N * 2) {
+      if(i & 1) cout << r[i] - 1 << " \n"[i + 1 == N * 2];
+      else cout << r[i] - 1 << ' ';
+   }
 }

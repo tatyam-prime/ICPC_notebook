@@ -37,6 +37,7 @@
     </ol>
     <li><a class="section" href="#math">math</a></li>
     <ol>
+    <li><a href="#BinaryGCD.hpp">BinaryGCD.hpp</a></li>
     </ol>
     <li><a class="section" href="#modint">modint</a></li>
     <ol>
@@ -222,6 +223,26 @@ setxkbmap <span class="token parameter variable">-option</span> ctrl:nocaps
 </div>
 
     <h2 class="section" id="math">math</h2>
+
+    <div class="filename">
+        <h2 id="BinaryGCD.hpp">BinaryGCD.hpp</h2>
+        md5: f3ab31
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code>u64 <span class="token function">ctz</span><span class="token punctuation">(</span>u64 x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">countr_zero</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+u64 <span class="token function">binary_gcd</span><span class="token punctuation">(</span>u64 x<span class="token punctuation">,</span> u64 y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>x <span class="token operator">||</span> <span class="token operator">!</span>y<span class="token punctuation">)</span> <span class="token keyword">return</span> x <span class="token operator">|</span> y<span class="token punctuation">;</span>
+   u64 n <span class="token operator">=</span> <span class="token function">ctz</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token function">ctz</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   x <span class="token operator">>>=</span> n<span class="token punctuation">,</span> y <span class="token operator">>>=</span> m<span class="token punctuation">;</span>
+   <span class="token keyword">while</span><span class="token punctuation">(</span>x <span class="token operator">!=</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">></span> y<span class="token punctuation">)</span> x <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">ctz</span><span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">else</span> y <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">ctz</span><span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> x <span class="token operator">&lt;&lt;</span> <span class="token function">min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
 
     <h2 class="section" id="modint">modint</h2>
 
@@ -663,16 +684,6 @@ random_device rnd<span class="token punctuation">;</span>
 <td>768</td>
 <td>1344</td>
 </tr>
-<tr>
-<td>factor</td>
-<td>3111</td>
-<td>3311</td>
-<td>33111</td>
-<td>421111</td>
-<td>631111</td>
-<td>5311111</td>
-<td>6321111</td>
-</tr>
 </tbody></table>
 <table>
 <thead>
@@ -684,6 +695,9 @@ random_device rnd<span class="token punctuation">;</span>
 <th>$10^{13}$</th>
 <th>$10^{14}$</th>
 <th>$10^{15}$</th>
+<th>$10^{16}$</th>
+<th>$10^{17}$</th>
+<th>$10^{18}$</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -694,37 +708,65 @@ random_device rnd<span class="token punctuation">;</span>
 <td>10752</td>
 <td>17280</td>
 <td>26880</td>
-</tr>
-<tr>
-<td>factor</td>
-<td>53211111</td>
-<td>63221111</td>
-<td>642111111</td>
-<td>6321111111</td>
-<td>5422111111</td>
-<td>64211111111</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>$≤n$</th>
-<th>$10^{16}$</th>
-<th>$10^{17}$</th>
-<th>$10^{18}$</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>$d^0(x)$</td>
 <td>41472</td>
 <td>64512</td>
 <td>103680</td>
 </tr>
+</tbody></table>
+<h4>素数階乗</h4>
+<table>
+<thead>
 <tr>
-<td>factor</td>
-<td>83221111111</td>
-<td>632211111111</td>
-<td>842211111111</td>
+<th>$n$</th>
+<th>$2$</th>
+<th>$3$</th>
+<th>$5$</th>
+<th>$7$</th>
+<th>$11$</th>
+<th>$13$</th>
+<th>$17$</th>
+<th>$19$</th>
+<th>$23$</th>
+<th>$29$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$n\#$</td>
+<td>2</td>
+<td>6</td>
+<td>30</td>
+<td>210</td>
+<td>2310</td>
+<td>30030</td>
+<td>510510</td>
+<td>9699690</td>
+<td>$2.2 \times 10^8$</td>
+<td>$6.5 \times 10^9$</td>
+</tr>
+</tbody></table>
+<h4>階乗</h4>
+<table>
+<thead>
+<tr>
+<th>$5!$</th>
+<th>$6!$</th>
+<th>$7!$</th>
+<th>$8!$</th>
+<th>$9!$</th>
+<th>$10!$</th>
+<th>$11!$</th>
+<th>$12!$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>120</td>
+<td>720</td>
+<td>5040</td>
+<td>40320</td>
+<td>362880</td>
+<td>3628800</td>
+<td>$4.0 \times 10^7$</td>
+<td>$4.8 \times 10^8$</td>
 </tr>
 </tbody></table>
 </div>

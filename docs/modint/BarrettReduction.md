@@ -2,6 +2,7 @@
 title: Barrett Reduction
 documentation_of: //src/modint/BarrettReduction.hpp
 ---
+- 参考実装：[AC Library](https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp)
 
 同じ mod でたくさん計算するとき，剰余算を掛け算に変換して高速化する．
 
@@ -9,7 +10,7 @@ documentation_of: //src/modint/BarrettReduction.hpp
 
 - `Barrett br(mod)`：Barrett Reduction を準備する．
     - 制約：`mod < 2^32`
-- `br.mul(u64 a, u64 b)`：`a * b % mod` を計算する．
+- `u64 br.mul(u64 a, u64 b)`：`a * b % mod` を計算する．
     - 制約：`a * b < 2^64`
 
 ## 仕組み

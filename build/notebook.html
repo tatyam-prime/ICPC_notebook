@@ -37,6 +37,7 @@
     </ol>
     <li><a class="section" href="#math">math</a></li>
     <ol>
+    <li><a href="#BinaryGCD.hpp">BinaryGCD.hpp</a></li>
     </ol>
     <li><a class="section" href="#modint">modint</a></li>
     <ol>
@@ -222,6 +223,26 @@ setxkbmap <span class="token parameter variable">-option</span> ctrl:nocaps
 </div>
 
     <h2 class="section" id="math">math</h2>
+
+    <div class="filename">
+        <h2 id="BinaryGCD.hpp">BinaryGCD.hpp</h2>
+        md5: f3ab31
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code>u64 <span class="token function">ctz</span><span class="token punctuation">(</span>u64 x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token function">countr_zero</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+u64 <span class="token function">binary_gcd</span><span class="token punctuation">(</span>u64 x<span class="token punctuation">,</span> u64 y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>x <span class="token operator">||</span> <span class="token operator">!</span>y<span class="token punctuation">)</span> <span class="token keyword">return</span> x <span class="token operator">|</span> y<span class="token punctuation">;</span>
+   u64 n <span class="token operator">=</span> <span class="token function">ctz</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token function">ctz</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   x <span class="token operator">>>=</span> n<span class="token punctuation">,</span> y <span class="token operator">>>=</span> m<span class="token punctuation">;</span>
+   <span class="token keyword">while</span><span class="token punctuation">(</span>x <span class="token operator">!=</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">></span> y<span class="token punctuation">)</span> x <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">ctz</span><span class="token punctuation">(</span>x <span class="token operator">-</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">else</span> y <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">ctz</span><span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> x <span class="token operator">&lt;&lt;</span> <span class="token function">min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
 
     <h2 class="section" id="modint">modint</h2>
 

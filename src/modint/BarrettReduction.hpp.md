@@ -26,7 +26,7 @@ data:
   isVerificationFile: false
   path: src/modint/BarrettReduction.hpp
   requiredBy: []
-  timestamp: '2024-05-24 10:03:35+09:00'
+  timestamp: '2024-05-31 15:50:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/modint/BarrettReduction.test.cpp

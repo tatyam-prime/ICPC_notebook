@@ -20,14 +20,13 @@ jobs:
       with:
         python-version: '3.x'
         cache: 'pip'
-        cache-dependency-path: ''
     
     - name: Install dependencies
       run: |
         pip install -U pip
         pip install -r requirements.txt
 
-    - name: Cache judge data
+    - name: Restore cached judge data
       uses: actions/cache@v4
       with:
         path: |
@@ -36,10 +35,9 @@ jobs:
           ~/.local/share/online-judge-tools/
         key: cache-judge-data
 
-    - name: Run tests
+    - run: oj-verify all
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
-      run: oj-verify all
 
     - run: git switch main

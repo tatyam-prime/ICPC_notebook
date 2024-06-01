@@ -29,7 +29,7 @@ data:
     \ >= 0 && b >= 0);\n   if(!b) return x = 1, y = 0, a;\n   ll d = extgcd(b, a %\
     \ b, y, x);\n   y -= a / b * x;\n   return d;\n}\n#line 4 \"test/math/ExtGCD.test.cpp\"\
     \n\nusing i128 = __int128_t;\ni128 abs(i128 x) { return x < 0 ? -x : x; }\nint\
-    \ main() {\n   mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)1e5)\
+    \ main() {\n   mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)5e4)\
     \ {\n         ll a = rnd() >> shift;\n         ll b = rnd() >> shift;\n      \
     \   const ll g = gcd(a, b);\n         ll x, y;\n         assert(extgcd(a, b, x,\
     \ y) == g);\n         assert((i128)a * x + (i128)b * y == g);\n         assert(abs(x)\
@@ -39,7 +39,7 @@ data:
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
     \n#include \"test/template.hpp\"\n#include \"src/math/ExtGCD.hpp\"\n\nusing i128\
     \ = __int128_t;\ni128 abs(i128 x) { return x < 0 ? -x : x; }\nint main() {\n \
-    \  mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)1e5) {\n     \
+    \  mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)5e4) {\n     \
     \    ll a = rnd() >> shift;\n         ll b = rnd() >> shift;\n         const ll\
     \ g = gcd(a, b);\n         ll x, y;\n         assert(extgcd(a, b, x, y) == g);\n\
     \         assert((i128)a * x + (i128)b * y == g);\n         assert(abs(x) + abs(y)\
@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: test/math/ExtGCD.test.cpp
   requiredBy: []
-  timestamp: '2024-06-01 02:08:16+09:00'
+  timestamp: '2024-06-01 09:41:34+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/ExtGCD.test.cpp

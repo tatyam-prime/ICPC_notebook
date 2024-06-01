@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/modint/modint.hpp
     title: Modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: test/template.hpp
     title: test/template.hpp
   _extendedRequiredBy: []

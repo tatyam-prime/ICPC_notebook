@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/FastSet.hpp
     title: "\u9AD8\u901F bitset (64 \u5206\u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: test/template.hpp
     title: test/template.hpp
   _extendedRequiredBy: []

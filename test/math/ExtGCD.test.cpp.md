@@ -1,18 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/ExtGCD.hpp
     title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
       \ (Extended Euclidean algorithm)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: test/template.hpp
     title: test/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
@@ -32,28 +32,30 @@ data:
     \ main() {\n   mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)5e4)\
     \ {\n         ll a = rnd() >> shift;\n         ll b = rnd() >> shift;\n      \
     \   const ll g = gcd(a, b);\n         ll x, y;\n         assert(extgcd(a, b, x,\
-    \ y) == g);\n         assert((i128)a * x + (i128)b * y == g);\n         assert(abs(x)\
-    \ + abs(y) <= abs((i128)x - b / g) + abs((i128)y + a / g));\n         assert(abs(x)\
-    \ + abs(y) <= abs((i128)x + b / g) + abs((i128)y - a / g));\n      }\n   }\n \
-    \  puts(\"Hello World\");\n}\n"
+    \ y) == g);\n         assert((i128)a * x + (i128)b * y == g);\n         if(g)\
+    \ {\n            assert(abs((i128)x) + abs((i128)y) <= abs((i128)x - b / g) +\
+    \ abs((i128)y + a / g));\n            assert(abs((i128)x) + abs((i128)y) <= abs((i128)x\
+    \ + b / g) + abs((i128)y - a / g));\n         }\n      }\n   }\n   puts(\"Hello\
+    \ World\");\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A\"\
     \n#include \"test/template.hpp\"\n#include \"src/math/ExtGCD.hpp\"\n\nusing i128\
     \ = __int128_t;\ni128 abs(i128 x) { return x < 0 ? -x : x; }\nint main() {\n \
     \  mt19937_64 rnd;\n   rep(shift, 1, 64) {\n      rep(i, 0, (ll)5e4) {\n     \
     \    ll a = rnd() >> shift;\n         ll b = rnd() >> shift;\n         const ll\
     \ g = gcd(a, b);\n         ll x, y;\n         assert(extgcd(a, b, x, y) == g);\n\
-    \         assert((i128)a * x + (i128)b * y == g);\n         assert(abs(x) + abs(y)\
-    \ <= abs((i128)x - b / g) + abs((i128)y + a / g));\n         assert(abs(x) + abs(y)\
-    \ <= abs((i128)x + b / g) + abs((i128)y - a / g));\n      }\n   }\n   puts(\"\
-    Hello World\");\n}\n"
+    \         assert((i128)a * x + (i128)b * y == g);\n         if(g) {\n        \
+    \    assert(abs((i128)x) + abs((i128)y) <= abs((i128)x - b / g) + abs((i128)y\
+    \ + a / g));\n            assert(abs((i128)x) + abs((i128)y) <= abs((i128)x +\
+    \ b / g) + abs((i128)y - a / g));\n         }\n      }\n   }\n   puts(\"Hello\
+    \ World\");\n}\n"
   dependsOn:
   - test/template.hpp
   - src/math/ExtGCD.hpp
   isVerificationFile: true
   path: test/math/ExtGCD.test.cpp
   requiredBy: []
-  timestamp: '2024-06-01 09:41:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-06-01 10:05:24+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/ExtGCD.test.cpp
 layout: document

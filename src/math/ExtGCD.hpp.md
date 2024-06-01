@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/ExtGCD.test.cpp
     title: test/math/ExtGCD.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/math/ExtGCD.hpp\"\n// returns gcd(a, b) and assign x,\
@@ -25,7 +25,7 @@ data:
   path: src/math/ExtGCD.hpp
   requiredBy: []
   timestamp: '2024-06-01 02:08:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/ExtGCD.test.cpp
 documentation_of: src/math/ExtGCD.hpp

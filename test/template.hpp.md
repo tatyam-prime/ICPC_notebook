@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/BinaryGCD.test.cpp
     title: test/math/BinaryGCD.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/ExtGCD.test.cpp
     title: test/math/ExtGCD.test.cpp
   - icon: ':heavy_check_mark:'
@@ -48,9 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/template.test.cpp
     title: test/template.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 1 "test/template.hpp"
@@ -98,7 +98,7 @@ data:
   path: test/template.hpp
   requiredBy: []
   timestamp: '2024-05-31 19:00:40+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data-structure/FastSet.test.cpp
   - test/data-structure/BIT.test.cpp

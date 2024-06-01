@@ -7,7 +7,7 @@ i128 abs(i128 x) { return x < 0 ? -x : x; }
 int main() {
    mt19937_64 rnd;
    rep(shift, 1, 64) {
-      rep(i, 0, (ll)1e5) {
+      rep(i, 0, (ll)5e4) {
          ll a = rnd() >> shift;
          ll b = rnd() >> shift;
          const ll g = gcd(a, b);

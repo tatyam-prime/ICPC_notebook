@@ -35,6 +35,7 @@ jobs:
           .verify-helper/cache/
           ~/.cache/online-judge-tools/library-checker-problems/
           ~/.local/share/online-judge-tools/
+        save-always: true
 
     - run: oj-verify all
       env:

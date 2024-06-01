@@ -14,8 +14,10 @@ int main() {
          ll x, y;
          assert(extgcd(a, b, x, y) == g);
          assert((i128)a * x + (i128)b * y == g);
-         assert(abs(x) + abs(y) <= abs((i128)x - b / g) + abs((i128)y + a / g));
-         assert(abs(x) + abs(y) <= abs((i128)x + b / g) + abs((i128)y - a / g));
+         if(g) {
+            assert(abs((i128)x) + abs((i128)y) <= abs((i128)x - b / g) + abs((i128)y + a / g));
+            assert(abs((i128)x) + abs((i128)y) <= abs((i128)x + b / g) + abs((i128)y - a / g));
+         }
       }
    }
    puts("Hello World");

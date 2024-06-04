@@ -82,11 +82,19 @@ for (const section of section_order) {
 `;
 
     const folder = "src/" + section;
-    for (const file of fs.readdirSync(folder)) {
-        if (fs.statSync(folder + "/" + file).isFile()) {
-            addCode(folder, file);
+
+    if (fs.existsSync(folder)) {
+        // フォルダ内のファイルを読み込む
+        for (const file of fs.readdirSync(folder)) {
+            if (fs.statSync(folder + "/" + file).isFile()) {
+                addCode(folder, file);
+            }
         }
+    } else {
+        // フォルダが空だったら warning を出す
+        console.warn(`Warning: ${folder} does not exist.`);
     }
+
     ToCContent += `
     </ol>`;
 }

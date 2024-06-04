@@ -1,4 +1,4 @@
-name: verify
+name: Verify library & Generate documentation
 
 on:
   push:
@@ -43,3 +43,42 @@ jobs:
         GH_PAT: ${{ secrets.GH_PAT }}
 
     - run: git switch main
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'latest'
+        cache: 'npm'
+
+    - name: Restore npm modules and caches
+      uses: actions/cache@v4
+      with:
+        key: cache-npm-${{ github.run_id }}
+        path: |
+          /usr/local/lib/node_modules/
+          ~/.npm/
+          ~/.cache/ms-playwright/
+        save-always: true
+
+    - name: Install Vivliostyle
+      run: npm install -g @vivliostyle/cli clang-format
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build PDF
+      run: make build
+    
+    - name: commit PDF
+      run: git add . && git commit -m "[skip actions] build PDF"
+
+    - name: copy to gh-pages
+      run: |
+        DIR=$(mktemp -d)
+        cp notebook.pdf $DIR
+        cp build/*.css $DIR
+        cp build/*.html $DIR
+        git switch gh-pages
+        cp $DIR/* .
+        git add . && git commit -m "build PDF" && git push
+        git switch main

@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 .vscode/
+.verify-helper/docs/static/base.css
+.verify-helper/docs/static/notebook.css
+.verify-helper/docs/static/notebook.html
+.verify-helper/docs/static/notebook.pdf

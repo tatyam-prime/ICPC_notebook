@@ -50,16 +50,6 @@ jobs:
         node-version: 'latest'
         cache: 'npm'
 
-    - name: Restore npm modules and caches
-      uses: actions/cache@v4
-      with:
-        key: cache-npm-${{ github.run_id }}
-        path: |
-          /usr/local/lib/node_modules/
-          ~/.npm/
-          ~/.cache/ms-playwright/
-        save-always: true
-
     - name: Install Vivliostyle
       run: npm install -g @vivliostyle/cli clang-format
 
@@ -70,7 +60,7 @@ jobs:
       run: make build
     
     - name: commit PDF
-      run: git add . && git commit -m "[skip actions] build PDF"
+      run: git add . && git commit -m "[skip actions] build PDF" && git push
 
     - name: copy to gh-pages
       run: |

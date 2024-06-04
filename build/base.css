@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-cold.min.css");
 
 
 html,
 code {
-    font-family: 'Jetbrains Mono', ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-family: 'Jetbrains Mono', 'Noto Sans JP', monospace;
     font-variant-ligatures: none;
 }
 

@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=M+PLUS+1p&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* @import url("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"); */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-coldark-cold.min.css");
 
 
 html,
 code {
-    font-family: 'JetBrains Mono', 'Noto Sans JP', monospace;
+    font-family: 'JetBrains Mono', 'M PLUS 1p';
     font-variant-ligatures: none;
 }
 
@@ -145,5 +144,5 @@ td, th {
     break-before: avoid;
 }
 .content-md {
-    font-family: sans-serif;
+    font-family: 'Roboto', 'M PLUS 1p';
 }

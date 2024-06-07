@@ -8,7 +8,25 @@
 - [ライブラリをまとめたページ](https://tatyam-prime.github.io/ICPC_notebook/notebook.html)
 - [ライブラリをまとめた PDF](https://tatyam-prime.github.io/ICPC_notebook/notebook.pdf)
 
-#### 事前にインストールするもの
+## private なコピーを作るには
+
+1. 新規 private repository を作る
+2. repository の Settings -> Actions -> Workflow permissions を Read and Write に設定
+3. `git clone https://github.com/tatyam-prime/ICPC_notebook.git && cd ICPC_notebook`
+4. `git remote set-url origin {your_private_repository_url}`
+5. `git commit -m "test" --allow-empty && git push`
+6. workflow が動くことを確認
+7. [README.txt](README.txt) をいい感じに修正
+
+## 内容を変更するには
+
+1. [src/\*/\*](src/) の中身を変更する
+2. [build/build.js](build/build.js) の設定項目を変更する
+3. commit & push
+
+## 手元で動かすには
+
+### 事前にインストールするもの
 
 - node.js (v18 以上)
 - npm
@@ -22,21 +40,15 @@
 - (使うなら) oj-verify
     - `pip3 install online-judge-verify-helper`
 
-## PDF の生成方法
+### PDF を生成する
 
 1. `make build`
 
-## 内容の変更方法
-
-1. [src/\*/\*](src/) の中身を変更する
-2. [build/build.js](build/build.js) の設定項目を変更する
-3. `make build`
-
-## oj-verify で verify
+### oj-verify で verify
 
 1. `make verify`
 
-## oj-verify ページを手元で生成
+### oj-verify ページを生成
 
 1. `make serve`
 

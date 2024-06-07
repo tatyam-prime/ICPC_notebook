@@ -40,7 +40,7 @@ jobs:
     - run: oj-verify all
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
+        GH_PAT: this_token_is_never_used_but_oj_verify_requires_this
 
     - run: git switch main
 
@@ -68,6 +68,7 @@ jobs:
         cp notebook.pdf $DIR
         cp build/*.css $DIR
         cp build/*.html $DIR
+        git clean -dfx
         git switch gh-pages
         cp $DIR/* .
         git add . && git commit -m "build PDF" && git push

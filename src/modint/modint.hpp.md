@@ -47,8 +47,8 @@ data:
   timestamp: '2024-02-23 02:15:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/FPS/FFT.test.cpp
   - test/modint/modint.test.cpp
+  - test/FPS/FFT.test.cpp
 documentation_of: src/modint/modint.hpp
 layout: document
 title: Modint

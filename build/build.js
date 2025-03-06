@@ -24,7 +24,7 @@ let ToCContent = "";
 
 // ファイルを開いて中身を取り出し、拡張子によって prism.js でパース & HTML エンコードを行う
 function addCode(folder, filename) {
-    const text = fs.readFileSync(folder + "/" + filename).toString();
+    let text = fs.readFileSync(folder + "/" + filename).toString();
 
     // タイトル行
     ToCContent += `
@@ -47,6 +47,9 @@ function addCode(folder, filename) {
         if (filename.endsWith(".md")) {
             return marked.marked(text, { gfm: true });
         }
+        // 空行に空白を入れる
+        text = text.replace(/\n\n/g, "\n \n");
+        text = text.replace(/\n\n/g, "\n \n");
         // prism.js でパース & HTML エンコード
         if (filename.endsWith(".cpp") || filename.endsWith(".hpp")) {
             return prism.highlight(text, prism.languages.cpp, "cpp");

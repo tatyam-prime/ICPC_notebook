@@ -16,7 +16,7 @@
 4. `git remote set-url origin {your_private_repository_url}`
 5. `git commit -m "test" --allow-empty && git push`
 6. workflow が動くことを確認
-7. [README.txt](README.txt) をいい感じに修正
+7. [README.md](README.md) をいい感じに修正
 
 ## 内容を変更するには
 

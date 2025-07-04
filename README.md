@@ -24,6 +24,10 @@
 2. [build/build.js](build/build.js) の設定項目を変更する
 3. commit & push
 
+### その他
+
+- [Makefile](Makefile) で clang-format による自動フォーマットを行っています．フォーマットの設定は [.clang-format](.clang-format) で変更できます．
+
 ## 手元で動かすには
 
 ### 事前にインストールするもの

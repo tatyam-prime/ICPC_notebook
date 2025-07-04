@@ -100,21 +100,21 @@ data:
   timestamp: '2024-05-31 19:00:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data-structure/BIT.test.cpp
-  - test/data-structure/FastSet.test.cpp
-  - test/math/BinaryGCD.test.cpp
-  - test/math/ExtGCD.test.cpp
-  - test/template.test.cpp
-  - test/string/Zalgorithm.test.cpp
-  - test/string/KMP.test.cpp
-  - test/string/LCP.test.cpp
-  - test/string/SuffixArray.test.cpp
-  - test/string/Manacher.test.cpp
-  - test/string/RollingHash.test.cpp
-  - test/modint/modint.test.cpp
   - test/modint/BarrettReduction.test.cpp
-  - test/FPS/FFT.test.cpp
+  - test/modint/modint.test.cpp
+  - test/string/Zalgorithm.test.cpp
+  - test/string/SuffixArray.test.cpp
+  - test/string/KMP.test.cpp
+  - test/string/Manacher.test.cpp
+  - test/string/LCP.test.cpp
+  - test/string/RollingHash.test.cpp
   - test/FPS/FFT_fast.test.cpp
+  - test/FPS/FFT.test.cpp
+  - test/template.test.cpp
+  - test/data-structure/FastSet.test.cpp
+  - test/data-structure/BIT.test.cpp
+  - test/math/ExtGCD.test.cpp
+  - test/math/BinaryGCD.test.cpp
 documentation_of: test/template.hpp
 layout: document
 redirect_from:

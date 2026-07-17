@@ -13,7 +13,7 @@ random_device rnd;
 const u64 r = ((u64)rnd() << 32 | rnd()) % mod;
 struct RH {
    ll n;
-   vector<u64> hs, pw;
+   V<u64> hs, pw;
    RH(string s) : n(sz(s)), hs(n + 1), pw(n + 1, 1) {
       rep(i, 0, n) {
          pw[i + 1] = mul(pw[i], r);

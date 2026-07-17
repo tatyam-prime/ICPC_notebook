@@ -5,7 +5,7 @@
 auto SA(auto s) { // string or vector
     // assert(s.size() >= 1);
     ll n = sz(s);
-    vector<ll> sa(n), r(n + 1), x(n), y(n + 1), c(n + 1);
+    V<ll> sa(n), r(n + 1), x(n), y(n + 1), c(n + 1);
     rep(i, 0, n) sa[i] = i;
     ranges::sort(sa, {}, [&](ll i){ return s[i]; });
     r[sa[0]] = 1;

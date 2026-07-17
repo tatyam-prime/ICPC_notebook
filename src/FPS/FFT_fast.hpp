@@ -1,9 +1,9 @@
 // modint を u32 にして加減算を真面目にやると速い
 mm g = 3;  // 原始根
-void fft(vector<mm>& a) {
+void fft(V<mm>& a) {
    ll n = sz(a), lg = __lg(n);
    static auto z = [] {
-      vector<mm> z(30);
+      V<mm> z(30);
       mm s = 1;
       rep(i, 2, 32) {
          z[i - 2] = s * g.pow(mod >> i);
@@ -26,10 +26,10 @@ void fft(vector<mm>& a) {
    }
 }
 // コピペ
-void ifft(vector<mm>& a) {
+void ifft(V<mm>& a) {
    ll n = sz(a), lg = __lg(n);
    static auto z = [] {
-      vector<mm> z(30);
+      V<mm> z(30);
       mm s = 1;
       rep(i, 2, 32) {  // g を逆数に
          z[i - 2] = s * g.inv().pow(mod >> i);
@@ -51,7 +51,7 @@ void ifft(vector<mm>& a) {
       }
    }
 }
-vector<mm> conv(vector<mm> a, vector<mm> b) {
+V<mm> conv(V<mm> a, V<mm> b) {
    if(a.empty() || b.empty()) return {};
    size_t s = sz(a) + sz(b) - 1, n = bit_ceil(s);
    // if(min(sz(a), sz(b)) <= 60) 愚直に掛け算

@@ -2,7 +2,7 @@
 const u64 B = 64;
 struct FastSet {
    u64 n;
-   vector<vector<u64>> a;
+   V<V<u64>> a;
    FastSet(u64 n_) : n(n_) {
       do a.emplace_back(n_ = (n_ + B - 1) / B);
       while(n_ > 1);

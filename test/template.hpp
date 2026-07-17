@@ -2,6 +2,7 @@
 using namespace std;
 using ll = long long;
 const ll INF = LLONG_MAX / 4;
+template<class T> using V = vector<T>;
 #define rep(i, a, b) for(ll i = a; i < (b); i++)
 #define each(i, a) for(auto&& i : a)
 #define all(a) begin(a), end(a)

@@ -4,7 +4,7 @@
 // $a$a$a$b$a$a$a$ -> 123432181234321
 auto manacher(string s) {
    ll n = sz(s), i = 0, j = 0;
-   vector<ll> r(n);
+   V<ll> r(n);
    while(i < n) {
       while(i >= j && i + j < n && s[i - j] == s[i + j]) j++;
       r[i] = j;

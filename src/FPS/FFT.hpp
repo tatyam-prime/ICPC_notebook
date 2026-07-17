@@ -1,9 +1,9 @@
 // {998244353, 3}, {1811939329, 13}, {2013265921, 31}
 mm g = 3;  // 原始根
-void fft(vector<mm>& a) {
+void fft(V<mm>& a) {
    ll n = sz(a), lg = __lg(n);
    assert((1 << lg) == n);
-   vector<mm> b(n);
+   V<mm> b(n);
    rep(l, 1, lg + 1) {
       ll w = n >> l;
       mm s = 1, r = g.pow(mod >> l);
@@ -18,7 +18,7 @@ void fft(vector<mm>& a) {
       swap(a, b);
    }
 }
-vector<mm> conv(vector<mm> a, vector<mm> b) {
+V<mm> conv(V<mm> a, V<mm> b) {
    if(a.empty() || b.empty()) return {};
    size_t s = sz(a) + sz(b) - 1, n = bit_ceil(s);
    // if(min(sz(a), sz(b)) <= 60) 愚直に掛け算

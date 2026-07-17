@@ -1,5 +1,5 @@
 struct BIT {
-   vector<ll> a;
+   V<ll> a;
    BIT(ll n) : a(n + 1) {}
    void add(ll i, ll x) {  // A[i] += x
       i++;

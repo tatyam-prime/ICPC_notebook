@@ -8,5 +8,7 @@ int main() {
    cin >> S;
    const ll N = sz(S);
    auto [sa, lcp] = SA(S);
+   assert(sa.size() == N);
+   assert(lcp.size() == N - 1);
    rep(i, 0, N) cout << sa[i] << " \n"[i + 1 == N];
 }

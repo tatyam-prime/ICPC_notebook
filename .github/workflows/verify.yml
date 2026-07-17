@@ -3,8 +3,11 @@ name: Verify library & Generate documentation
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,56 +16,141 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - name: Check out the pull request
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
-        cache: 'pip'
-    
-    - name: Install dependencies
-      run: |
-        pip install -U pip
-        pip install -r requirements.txt
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.12'
+          cache: 'pip'
 
-    # - run: oj-verify all
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_PAT: this_token_is_never_used_but_oj_verify_requires_this
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
-    - run: git switch main
+      # Verification is temporarily disabled.
+      # - name: Verify library
+      #   run: oj-verify all
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #     GH_PAT: this_token_is_never_used_but_oj_verify_requires_this
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 'latest'
-        cache: 'npm'
+  build:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
 
-    - name: Install Vivliostyle
-      run: npm install -g @vivliostyle/cli clang-format
+    steps:
+      - name: Check out triggering commit
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
 
-    - name: Install dependencies
-      run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+          cache: 'npm'
 
-    - name: Build PDF
-      run: make build
-    
-    - name: commit PDF
-      run: git add . && git commit -m "[skip actions] build PDF" && git push
+      - name: Install Vivliostyle
+        run: npm install --global @vivliostyle/cli clang-format
 
-    - name: copy to gh-pages
-      run: |
-        DIR=$(mktemp -d)
-        cp notebook.pdf $DIR
-        cp build/*.css $DIR
-        cp build/*.html $DIR
-        git clean -dfx
-        git switch gh-pages
-        cp $DIR/* .
-        git add . && git commit -m "build PDF" && git push
-        git switch main
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build PDF
+        run: make build
+
+      - name: Package generated files
+        run: |
+          tar -czf publish-output.tar.gz \
+            notebook.pdf \
+            build/notebook.css \
+            build/notebook.html \
+            .verify-helper/docs/_config.yml \
+            src
+
+      - name: Upload generated files
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: publish-output
+          path: publish-output.tar.gz
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Ensure main has not advanced
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          ACTUAL_SHA=$(git rev-parse HEAD)
+          if [[ "$ACTUAL_SHA" != "$EXPECTED_SHA" ]]; then
+            echo "main advanced from $EXPECTED_SHA to $ACTUAL_SHA; refusing to publish stale output"
+            exit 1
+          fi
+
+      - name: Download generated files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: publish-output
+
+      - name: Extract generated files
+        run: tar -xzf publish-output.tar.gz
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit PDF
+        run: |
+          git add -- \
+            notebook.pdf \
+            build/notebook.css \
+            build/notebook.html \
+            .verify-helper/docs/_config.yml \
+            src
+          if ! git diff --cached --quiet; then
+            git commit -m "[skip actions] build PDF"
+            git push origin main
+          fi
+
+      - name: Copy to gh-pages
+        run: |
+          DIR=$(mktemp -d)
+          cp notebook.pdf "$DIR"
+          cp build/*.css "$DIR"
+          cp build/*.html "$DIR"
+          git clean -dfx
+          git switch gh-pages
+          cp "$DIR"/* .
+          git add -- .
+          if ! git diff --cached --quiet; then
+            git commit -m "build PDF"
+            git push origin gh-pages
+          fi

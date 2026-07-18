@@ -32,7 +32,7 @@
 
 ### 事前にインストールするもの
 
-- node.js (v18 以上)
+- node.js
 - npm
     - `brew install node` / <https://learn.microsoft.com/ja-jp/windows/dev-environment/javascript/nodejs-on-wsl>
 - clang-format
@@ -41,18 +41,17 @@
     - `npm install -g @vivliostyle/cli`
 - その他依存関係
     - `npm install`
-- (使うなら) oj-verify
-    - `pip3 install online-judge-verify-helper`
+- (使うなら) competitive-verifier
+    - `uv tool install competitive-verifier`
 
 ### PDF を生成する
 
 1. `make build`
 
-### oj-verify で verify
+### competitive-verifier で verify
 
 1. `make verify`
 
-### oj-verify ページを生成
+### competitive-verifier ページを生成
 
 1. `make serve`
-

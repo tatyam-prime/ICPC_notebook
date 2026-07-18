@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+# CXX may be used to override the compiler (for example, CXX=g++-15 make verify).
+if [ "${CXX:-g++}" != "g++" ]; then
+    exec "$CXX" "$@"
+fi
+
+if [ "$(uname -s)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
+    gcc_prefix=$(brew --prefix gcc)
+    compiler=$(printf '%s\n' "$gcc_prefix"/bin/g++-* | head -n 1)
+else
+    compiler=$(command -v g++)
+fi
+
+if [ ! -x "$compiler" ]; then
+    echo "C++ compiler not found: $compiler" >&2
+    exit 127
+fi
+
+exec "$compiler" "$@"

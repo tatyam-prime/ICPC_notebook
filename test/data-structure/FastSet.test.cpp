@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/predecessor_problem
 #include "test/template.hpp"
 using u64 = uint64_t;
 #include "src/data-structure/FastSet.hpp"

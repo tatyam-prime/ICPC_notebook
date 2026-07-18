@@ -81,10 +81,36 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Download verification targets
         uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
+
+      - name: Compute verification cache key
+        id: verifier-cache
+        run: |
+          toolchain_hash=$(g++ --version | sha256sum | cut -d ' ' -f 1)
+          echo "toolchain-hash=$toolchain_hash" >> "$GITHUB_OUTPUT"
+
+      - name: Restore previous verification result
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: previous-result.json
+          key: >-
+            competitive-verifier-result-v1-${{ runner.os }}-${{
+            hashFiles('.competitive-verifier/config.toml', '.competitive-verifier/g++',
+            'requirements.txt', '.github/workflows/verify.yml') }}-${{
+            steps.verifier-cache.outputs.toolchain-hash }}-${{ github.sha }}
+          restore-keys: |
+            competitive-verifier-result-v1-${{ runner.os }}-${{ hashFiles('.competitive-verifier/config.toml', '.competitive-verifier/g++', 'requirements.txt', '.github/workflows/verify.yml') }}-${{ steps.verifier-cache.outputs.toolchain-hash }}-
+
+      - name: Find previous verification result
+        id: previous-result
+        run: |
+          if test -f previous-result.json; then
+            echo "path=previous-result.json" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up competitive-verifier
         uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
@@ -96,6 +122,7 @@ jobs:
         uses: competitive-verifier/actions/verify@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           destination: ${{ runner.temp }}/result.json
+          prev-result: ${{ steps.previous-result.outputs.path }}
           split-size: ${{ env.SPLIT_SIZE }}
           split-index: ${{ matrix.index }}
           timeout: 1800
@@ -107,6 +134,58 @@ jobs:
           path: ${{ runner.temp }}/result.json
           if-no-files-found: error
           retention-days: 1
+
+  merge-verify-results:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out the triggering commit
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Download verification targets and results
+        id: artifacts
+        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
+        with:
+          download-all: true
+          artifact-root: .artifacts
+
+      - name: Set up competitive-verifier
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
+        with:
+          package: competitive-verifier==4.1.2
+          cache-pip: true
+
+      - name: Merge verification results
+        uses: competitive-verifier/actions/merge-result@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
+        with:
+          result-files: ${{ steps.artifacts.outputs.artifacts-root }}/Result-${{ runner.os }}-*/result.json
+          output-path: previous-result.json
+
+      - name: Check merged verification result
+        uses: competitive-verifier/actions/check@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
+        with:
+          verify-result: previous-result.json
+
+      - name: Compute verification cache key
+        id: verifier-cache
+        run: |
+          toolchain_hash=$(g++ --version | sha256sum | cut -d ' ' -f 1)
+          echo "toolchain-hash=$toolchain_hash" >> "$GITHUB_OUTPUT"
+
+      - name: Save verification result
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: previous-result.json
+          key: >-
+            competitive-verifier-result-v1-${{ runner.os }}-${{
+            hashFiles('.competitive-verifier/config.toml', '.competitive-verifier/g++',
+            'requirements.txt', '.github/workflows/verify.yml') }}-${{
+            steps.verifier-cache.outputs.toolchain-hash }}-${{ github.sha }}
 
   build:
     if: >-

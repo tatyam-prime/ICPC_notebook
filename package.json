@@ -1,7 +1,10 @@
 {
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "escape-html": "^1.0.3",
-    "marked": "^12.0.0",
-    "prismjs": "^1.29.0"
+    "escape-html": "1.0.3",
+    "marked": "18.0.6",
+    "prismjs": "1.30.0"
   }
 }

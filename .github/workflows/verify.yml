@@ -28,12 +28,13 @@ jobs:
           persist-credentials: false
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@v2
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
+          package: competitive-verifier==4.1.2
           cache-pip: true
 
       - name: Resolve verification targets
-        uses: competitive-verifier/actions/oj-resolve@v2
+        uses: competitive-verifier/actions/oj-resolve@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           output-path: verify_files.json
           exclude: |
@@ -42,12 +43,12 @@ jobs:
           config: .competitive-verifier/config.toml
 
       - name: Parse Doxygen comments
-        uses: competitive-verifier/actions/parse-doxygen@v2
+        uses: competitive-verifier/actions/parse-doxygen@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           verify-files: verify_files.json
 
       - name: Upload verification targets
-        uses: competitive-verifier/actions/upload-verify-artifact@v2
+        uses: competitive-verifier/actions/upload-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           file: verify_files.json
 
@@ -83,15 +84,16 @@ jobs:
           persist-credentials: false
 
       - name: Download verification targets
-        uses: competitive-verifier/actions/download-verify-artifact@v2
+        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@v2
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
+          package: competitive-verifier==4.1.2
           cache-pip: true
 
       - name: Verify library
-        uses: competitive-verifier/actions/verify@v2
+        uses: competitive-verifier/actions/verify@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           destination: ${{ runner.temp }}/result.json
           split-size: ${{ env.SPLIT_SIZE }}
@@ -177,7 +179,7 @@ jobs:
 
       - name: Download verification targets and results
         id: artifacts
-        uses: competitive-verifier/actions/download-verify-artifact@v2
+        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           download-all: true
           artifact-root: .artifacts
@@ -204,12 +206,13 @@ jobs:
           cp build/*.css .competitive-verifier/docs/static/
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@v2
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
+          package: competitive-verifier==4.1.2
           cache-pip: true
 
       - name: Generate documentation
-        uses: competitive-verifier/actions/docs@v2
+        uses: competitive-verifier/actions/docs@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           verify-result: ${{ steps.artifacts.outputs.artifacts-root }}/Result-*/result.json
           exclude: |
@@ -239,7 +242,7 @@ jobs:
           retention-days: 1
 
       - name: Check verification results
-        uses: competitive-verifier/actions/check@v2
+        uses: competitive-verifier/actions/check@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2
         with:
           verify-result: ${{ steps.artifacts.outputs.artifacts-root }}/Result-*/result.json
 

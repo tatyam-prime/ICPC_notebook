@@ -118,7 +118,7 @@ fs.writeFileSync("build/notebook.html", `<!DOCTYPE html>
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js"></script>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="notebook.css" />
 </head>

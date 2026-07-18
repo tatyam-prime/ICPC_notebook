@@ -192,7 +192,6 @@ jobs:
       github.event_name == 'push' ||
       (github.event.pull_request.head.repo.full_name == github.repository &&
       github.actor != 'dependabot[bot]')
-    needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 30
 

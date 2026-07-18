@@ -1,3 +1,6 @@
+[languages.cpp]
+read_macros = false
+
 [[languages.cpp.environments]]
-CXX = "g++"
+CXX = ".competitive-verifier/g++"
 CXXFLAGS = ["-std=c++20", "-Wall", "-Wextra", "-Wshadow", "-O2"]

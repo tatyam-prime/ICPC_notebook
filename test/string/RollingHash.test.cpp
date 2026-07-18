@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
+// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/zalgorithm
 #include "test/template.hpp"
 using u64 = uint64_t;
 #include "src/string/RollingHash.hpp"

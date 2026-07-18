@@ -1,19 +1,26 @@
-PHONY: build verify serve
+.PHONY: build verify serve
+
+VERIFY_DIR = .competitive-verifier/tmp
+VERIFY_FILES = $(VERIFY_DIR)/verify_files.json
+VERIFY_RESULT = $(VERIFY_DIR)/result.json
+VERIFY_PREV_RESULT = $(if $(wildcard $(VERIFY_RESULT)),--prev-result $(VERIFY_RESULT))
 
 build: notebook.pdf
 
-verify: .verify-helper/timestamps.local.json $(wildcard src/*/* test/* test/*/*)
-	clang-format -i test/*/*.cpp test/*.hpp
-	oj-verify run
+verify: $(wildcard src/*/* test/* test/*/*)
+	clang-format -i test/*/*.test.cpp test/*.hpp
+	competitive-verifier oj-resolve --exclude node_modules test/benchmark --config .competitive-verifier/config.toml > $(VERIFY_FILES)
+	competitive-verifier verify --verify-json $(VERIFY_FILES) --check-error --output $(VERIFY_RESULT) $(VERIFY_PREV_RESULT)
 
 URL = "http://127.0.0.1:4000"
 
 serve: build verify
-	cp notebook.pdf .verify-helper/docs/static/
-	cp build/notebook.html .verify-helper/docs/static/
-	cp build/*.css .verify-helper/docs/static/
-	oj-verify docs
-	cd .verify-helper/markdown; \
+	mkdir -p .competitive-verifier/docs/static
+	cp notebook.pdf .competitive-verifier/docs/static/
+	cp build/notebook.html .competitive-verifier/docs/static/
+	cp build/*.css .competitive-verifier/docs/static/
+	competitive-verifier docs $(VERIFY_RESULT) --verify-json $(VERIFY_FILES) --docs .competitive-verifier/docs --destination .competitive-verifier/_jekyll
+	cd .competitive-verifier/_jekyll; \
 	bundle install; \
 	( sleep 5.5; \
 	  ( command -v open && open $(URL) ) || \

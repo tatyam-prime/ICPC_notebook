@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_1_A
+// competitive-verifier: STANDALONE
 #include "test/template.hpp"
 using u64 = uint64_t;
 #include "src/math/BinaryGCD.hpp"

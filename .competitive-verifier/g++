@@ -6,6 +6,7 @@ if [ "${CXX:-g++}" != "g++" ]; then
     exec "$CXX" "$@"
 fi
 
+# find g++ installed by Homebrew on macOS, or use the system g++ otherwise
 if [ "$(uname -s)" = "Darwin" ] && command -v brew >/dev/null 2>&1; then
     gcc_prefix=$(brew --prefix gcc)
     compiler=$(printf '%s\n' "$gcc_prefix"/bin/g++-* | head -n 1)

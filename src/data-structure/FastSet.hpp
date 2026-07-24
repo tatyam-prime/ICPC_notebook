@@ -9,13 +9,13 @@ struct FastSet {
    }
    // bool operator[](ll i) const { return a[0][i / B] >> (i % B) & 1; }
    void set(ll i) {
-      for(auto& v : a) {
+      each(v, a) {
          v[i / B] |= 1ULL << (i % B);
          i /= B;
       }
    }
    void reset(ll i) {
-      for(auto& v : a) {
+      each(v, a) {
          v[i / B] &= ~(1ULL << (i % B));
          if(v[i / B]) break;
          i /= B;

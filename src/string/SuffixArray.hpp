@@ -17,7 +17,7 @@ auto SA(auto s) {  // string or vector
       ranges::fill(c, 0);
       each(i, x) c[r[i]]++;
       rep(i, 0, n) c[i + 1] += c[i];
-      for(ll i : x | views::reverse) sa[--c[r[i]]] = i;
+      each(i, x | views::reverse) sa[--c[r[i]]] = i;
       y[sa[0]] = 1;
       rep(i, 1, n) {
          ll a = sa[i - 1], b = sa[i];

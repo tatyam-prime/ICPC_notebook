@@ -9,8 +9,7 @@ u64 mul(u64 a, u64 b) {
    auto c = (__uint128_t)a * b;
    return add(c >> 61, c & mod);
 }
-random_device rnd;
-const u64 r = ((u64)rnd() << 32 | rnd()) % mod;
+const u64 r = random_device{}();
 struct RH {
    ll n;
    V<u64> hs, pw;

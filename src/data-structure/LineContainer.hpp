@@ -13,7 +13,7 @@ struct LineContainer : set<Line, less<>> {
    }
    void add(ll a, ll b) {  // add line ax + b
       auto [z, f] = emplace(a, b, LLONG_MAX);
-      if(z->b < b) z->b = b;
+      chmax(z->b, b);
       auto y = z++, x = y;
       while(z != end() && check(y, z)) z = erase(z);
       if(x != begin() && check(--x, y)) check(x, y = erase(y));

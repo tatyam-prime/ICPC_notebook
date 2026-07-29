@@ -70,6 +70,7 @@
     </ol>
     <li><a class="section" href="#algorithm">algorithm</a></li>
     <ol>
+    <li><a href="#GoldenSearch.hpp">GoldenSearch.hpp</a></li>
     </ol>
     <li><a class="section" href="#geometry">geometry</a></li>
     <ol>
@@ -577,7 +578,7 @@ V<span class="token operator">&lt;</span>mm<span class="token operator">></span>
 
     <div class="filename">
         <h2 id="RollingHash.hpp">RollingHash.hpp</h2>
-        md5: 9caccf
+        md5: f4a7db
 
     </div>
     <div class="content content-hpp">
@@ -592,8 +593,7 @@ u64 <span class="token function">mul</span><span class="token punctuation">(</sp
    <span class="token keyword">auto</span> c <span class="token operator">=</span> <span class="token punctuation">(</span>__uint128_t<span class="token punctuation">)</span>a <span class="token operator">*</span> b<span class="token punctuation">;</span>
    <span class="token keyword">return</span> <span class="token function">add</span><span class="token punctuation">(</span>c <span class="token operator">>></span> <span class="token number">61</span><span class="token punctuation">,</span> c <span class="token operator">&amp;</span> mod<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-random_device rnd<span class="token punctuation">;</span>
-<span class="token keyword">const</span> u64 r <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>u64<span class="token punctuation">)</span><span class="token function">rnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">32</span> <span class="token operator">|</span> <span class="token function">rnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+<span class="token keyword">const</span> u64 r <span class="token operator">=</span> random_device<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">struct</span> <span class="token class-name">RH</span> <span class="token punctuation">{</span>
    ll n<span class="token punctuation">;</span>
    V<span class="token operator">&lt;</span>u64<span class="token operator">></span> hs<span class="token punctuation">,</span> pw<span class="token punctuation">;</span>
@@ -682,6 +682,30 @@ random_device rnd<span class="token punctuation">;</span>
 </div>
 
     <h2 class="section" id="algorithm">algorithm</h2>
+
+    <div class="filename">
+        <h2 id="GoldenSearch.hpp">GoldenSearch.hpp</h2>
+        md5: 900cf6
+
+    </div>
+    <div class="content content-hpp">
+    <pre><code><span class="token comment">// return {argmax, max}</span>
+<span class="token comment">// f は [l, r] 上で上に単峰であること</span>
+<span class="token keyword">auto</span> <span class="token function">golden</span><span class="token punctuation">(</span><span class="token keyword">double</span> l<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">,</span> <span class="token keyword">auto</span> f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">const</span> <span class="token keyword">double</span> p <span class="token operator">=</span> numbers<span class="token double-colon punctuation">::</span>phi <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+   <span class="token keyword">double</span> r2 <span class="token operator">=</span> <span class="token function">lerp</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">auto</span> fr <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span>r2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// phi^80 = 5e16</span>
+      <span class="token keyword">double</span> l2 <span class="token operator">=</span> <span class="token function">lerp</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> l<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">auto</span> fl <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span>l2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// maximize</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>fl <span class="token operator">&lt;</span> fr<span class="token punctuation">)</span> l <span class="token operator">=</span> r<span class="token punctuation">,</span> r <span class="token operator">=</span> l2<span class="token punctuation">;</span>
+      <span class="token keyword">else</span> r <span class="token operator">=</span> r2<span class="token punctuation">,</span> r2 <span class="token operator">=</span> l2<span class="token punctuation">,</span> fr <span class="token operator">=</span> fl<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> pair<span class="token punctuation">{</span>r2<span class="token punctuation">,</span> fr<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
 
     <h2 class="section" id="geometry">geometry</h2>
 

@@ -1,4 +1,4 @@
-.PHONY: build verify serve
+.PHONY: build check verify serve
 
 VERIFY_DIR = .competitive-verifier/tmp
 VERIFY_FILES = $(VERIFY_DIR)/verify_files.json
@@ -6,6 +6,9 @@ VERIFY_RESULT = $(VERIFY_DIR)/result.json
 VERIFY_PREV_RESULT = $(if $(wildcard $(VERIFY_RESULT)),--prev-result $(VERIFY_RESULT))
 
 build: notebook.pdf
+
+check: notebook.pdf
+	python3 build/check_pdf.py notebook.pdf build/notebook.html
 
 verify: $(wildcard src/*/* test/* test/*/*)
 	clang-format -i test/*/*.test.cpp test/*.hpp

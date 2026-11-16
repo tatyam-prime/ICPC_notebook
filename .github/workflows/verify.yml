@@ -235,6 +235,48 @@ jobs:
           if-no-files-found: error
           retention-days: 1
 
+  # PDF から行が欠落していないかを調べる (#3)
+  # publish はこのジョブを待たないので、欠落があっても公開したうえで CI を失敗させる
+  check-pdf:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out the triggering commit
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Download generated files
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
+        with:
+          name: publish-output
+
+      - name: Extract generated files
+        run: tar -xzf publish-output.tar.gz notebook.pdf build/notebook.css build/notebook.html
+
+      - name: Install pdftotext
+        run: |
+          if ! command -v pdftotext; then
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+
+      - name: Check for missing lines
+        run: |
+          status=0
+          python3 build/check_pdf.py notebook.pdf build/notebook.html > check.log || status=$?
+          cat check.log
+          {
+            echo '### PDF の欠落チェック'
+            echo '```'
+            cat check.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
+
   docs-and-check:
     if: >-
       always() &&

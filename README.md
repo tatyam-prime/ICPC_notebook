@@ -27,6 +27,8 @@
 ### その他
 
 - [Makefile](Makefile) で clang-format による自動フォーマットを行っています．フォーマットの設定は [.clang-format](.clang-format) で変更できます．
+- .md 中の数式 (`$...$` / `$$...$$`) はビルド時に MathJax で SVG に変換されます．中身は TeX としてそのまま解釈されます．
+- CI は PDF から行が欠落していないかを [build/check_pdf.py](build/check_pdf.py) で確認し，欠落があれば PDF を公開したうえで失敗します．
 
 ## 手元で動かすには
 
@@ -43,10 +45,16 @@
     - `npm install`
 - (使うなら) competitive-verifier
     - `uv tool install competitive-verifier`
+- (使うなら) pdftotext
+    - `brew install poppler` / `sudo apt install poppler-utils`
 
 ### PDF を生成する
 
 1. `make build`
+
+### PDF から行が欠落していないか確認する
+
+1. `make check`
 
 ### competitive-verifier で verify
 
